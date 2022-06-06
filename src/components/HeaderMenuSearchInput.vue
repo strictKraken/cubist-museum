@@ -4,7 +4,7 @@
 			<img class="search__img img-svg" src="@/img/icons/Search.svg" alt="Search icon">
 		</button>
 
-		<input class="search__input" type="text" placeholder="Search">
+		<input class="search__input" type="text" placeholder="Search" v-model='searchData'>
 		<button class="search__btn-clear">
 			<img class="search__xross " src="@/img/icons/xross.svg" alt="xross">
 		</button>
@@ -13,22 +13,30 @@
 
 <script>
 import $ from 'jquery';
-import { onMounted } from '@vue/runtime-core';
+import { onMounted, onUpdated, watch, ref } from '@vue/runtime-core';
 
 export default {
 	name: 'SearchInput',
 	setup() {
+
+		let searchData = ref(null);
 		onMounted(()=> {
 			activeSearch();
 		}) 
+		onUpdated(() => {
+			activeSearch();
+		})
+		watch(searchData, (newData) => {
+			localStorage.searchData = newData
+		});
+			
 		function activeSearch() {
 			const search = $('.search');
-				
+
 			search.click(() => {
 				if (!search.hasClass('active-search')) {
-					search.children('input').val(sessionStorage.getItem('searchText'));
+					search.children('input').val(localStorage.searchData);
 				}
-
 				search.addClass('active-search');
 				search.children('input').attr('placeholder', 'What are you looking for?');
 				showXross();
@@ -60,16 +68,16 @@ export default {
 			});
 
 			search.children('.search__btn-clear').click(function clearInput() {
-				console.log('clear');
 				search.children('input').val('');
+				searchData.value = '';
 				if (search.children('input').hasClass('active-search')) {
 					//
 				}
 			})
 		}
-		activeSearch();
 		return {
 			activeSearch,
+			searchData,
 		}
 	},
 }

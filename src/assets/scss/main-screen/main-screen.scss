@@ -2,8 +2,9 @@
 @import './btn-to-top';
 
 .welcome {
-
+	
 	&__content {
+		height: 100%;
 		display: flex;
 	}
 

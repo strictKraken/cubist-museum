@@ -460,25 +460,16 @@
 
 		</div>
 
-		<div class="exhibitions-btn">
-			<button class="exhibitions__btn-to-top btn-to-top">
-				<div class="btn-to-top__link" href="#">
-					<img class="img-svg" src="@/img/icons/arrow-top.svg" alt="btn-return">
-				</div>
-				<p class="btn-to-top__text">
-					Back to the top
-				</p>
-			</button>
-		</div>
+		<button-to-top class="exhibitions-btn"/>
 	</div>
 </template>
 
 <script>
-
+import ButtonToTop from '@/components/ButtonToTop.vue'
 export default {
 	name: 'PageExhibitions',
 	components: {
-
+		ButtonToTop,
 	},
 	setup() {
 		

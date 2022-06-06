@@ -1,5 +1,5 @@
 <template>
-	<div class="">
+	<div>
 		<section class="welcome">
 			<div class="welcome__content">
 				<div class="welcome__img-bg-left">
@@ -91,7 +91,6 @@
 					</div>
 				</div>
 			</div>
-
 		</section>
 
 		<section class="exhibitions">
@@ -119,8 +118,83 @@
 							Neo-Primitivism, Constructivism, and Metaphysical painting.
 						</template>
 					</exhibition-cart-item>
-					
-					<div class="cart2 exhibitions__cart cart-exhibitions _ibg">
+					<exhibition-cart-item class="cart2">
+						<template v-slot:image>
+							<img class="cart-exhibitions__bg " src="@/img/Content/exhibitions/1.jpg" alt="bg">
+						</template>
+						<template v-slot:online>
+							Online
+						</template>
+						<template v-slot:title>
+								Exhibition of works by Bela Kadar
+						</template>
+						
+						<template v-slot:date>
+							15 Feb 2022 - 15 Jul 2023
+						</template>
+						<template v-slot:about>
+							Béla Kádár (1877–1956) was a Hungarian painter influenced by Der Blaue Reiter, Cubism, Futurism,
+							Neo-Primitivism, Constructivism, and Metaphysical painting.
+						</template>
+					</exhibition-cart-item>
+					<exhibition-cart-item class="cart3">
+						<template v-slot:image>
+							<img class="cart-exhibitions__bg " src="@/img/Content/exhibitions/1.jpg" alt="bg">
+						</template>
+						<template v-slot:online>
+							Online
+						</template>
+						<template v-slot:title>
+								Exhibition of works by Bela Kadar
+						</template>
+						
+						<template v-slot:date>
+							15 Feb 2022 - 15 Jul 2023
+						</template>
+						<template v-slot:about>
+							Béla Kádár (1877–1956) was a Hungarian painter influenced by Der Blaue Reiter, Cubism, Futurism,
+							Neo-Primitivism, Constructivism, and Metaphysical painting.
+						</template>
+					</exhibition-cart-item>
+					<exhibition-cart-item class="cart4">
+						<template v-slot:image>
+							<img class="cart-exhibitions__bg " src="@/img/Content/exhibitions/1.jpg" alt="bg">
+						</template>
+						<template v-slot:online>
+							Online
+						</template>
+						<template v-slot:title>
+								Exhibition of works by Bela Kadar
+						</template>
+						
+						<template v-slot:date>
+							15 Feb 2022 - 15 Jul 2023
+						</template>
+						<template v-slot:about>
+							Béla Kádár (1877–1956) was a Hungarian painter influenced by Der Blaue Reiter, Cubism, Futurism,
+							Neo-Primitivism, Constructivism, and Metaphysical painting.
+						</template>
+					</exhibition-cart-item>
+					<exhibition-cart-item class="cart5">
+						<template v-slot:image>
+							<img class="cart-exhibitions__bg " src="@/img/Content/exhibitions/1.jpg" alt="bg">
+						</template>
+						<template v-slot:online>
+							Online
+						</template>
+						<template v-slot:title>
+								Exhibition of works by Bela Kadar
+						</template>
+						
+						<template v-slot:date>
+							15 Feb 2022 - 15 Jul 2023
+						</template>
+						<template v-slot:about>
+							Béla Kádár (1877–1956) was a Hungarian painter influenced by Der Blaue Reiter, Cubism, Futurism,
+							Neo-Primitivism, Constructivism, and Metaphysical painting.
+						</template>
+					</exhibition-cart-item>
+					<!-- <div class="cart2 exhibitions__cart cart-exhibitions _ibg">
 						<img class="cart-exhibitions__bg " src="@/img/Content/exhibitions/1.jpg" alt="">
 						<div class="cart-exhibitions__info">
 							<div class="cart-exhibitions__online">
@@ -141,7 +215,7 @@
 						</div>
 					</div>
 					<div class="cart3 exhibitions__cart cart-exhibitions _ibg">
-						<!-- <img class="cart-exhibitions__bg " src="@img/Content/exhibitions/1.jpg" alt=""> -->
+						<img class="cart-exhibitions__bg " src="@img/Content/exhibitions/1.jpg" alt="">
 						<div class="cart-exhibitions__info">
 							<div class="cart-exhibitions__online">
 								<span class="bg-red">online</span>
@@ -161,7 +235,7 @@
 						</div>
 					</div>
 					<div class="cart4 exhibitions__cart cart-exhibitions _ibg">
-						<!-- <img class="cart-exhibitions__bg " src="@img/Content/exhibitions/1.jpg" alt=""> -->
+						<img class="cart-exhibitions__bg " src="@img/Content/exhibitions/1.jpg" alt="">
 						<div class="cart-exhibitions__info">
 							<div class="cart-exhibitions__online">
 								<span class="bg-red">online</span>
@@ -181,7 +255,7 @@
 						</div>
 					</div>
 					<div class="cart5 exhibitions__cart cart-exhibitions _ibg">
-						<!-- <img class="cart-exhibitions__bg " src="@img/Content/exhibitions/1.jpg" alt=""> -->
+						<img class="cart-exhibitions__bg " src="@img/Content/exhibitions/1.jpg" alt="">
 						<div class="cart-exhibitions__info">
 							<div class="cart-exhibitions__online">
 								<span class="bg-red">online</span>
@@ -199,25 +273,17 @@
 								Neo-Primitivism, Constructivism, and Metaphysical painting.
 							</p>
 						</div>
-					</div>
-					<a class="exhibitions__cart-more cart-more">
+					</div> -->
+					<router-link :to="{name: 'Exhibitions'}" class="exhibitions__cart-more cart-more">
 						<p class="cart-more__text">
 							All exhibitions
 						</p>
 						<div class="cart-more__link" href="#">
-							<!-- <img class="img-svg" src="@img/icons/big-arrow.svg" alt="btn-more"> -->
+							<img class="img-svg" src="@/img/icons/big-arrow.svg" alt="btn-more">
 						</div>
-					</a>
+					</router-link>
 				</div>
-
-				<button class="exhibitions__btn-to-top btn-to-top">
-					<div class="btn-to-top__link" href="#">
-						<img class="img-svg" src="@/img/icons/arrow-top.svg" alt="btn-return">
-					</div>
-					<p class="btn-to-top__text">
-						Back to the top
-					</p>
-				</button>
+				<button-to-top></button-to-top>
 			</div>
 		</section>
 	</div>
@@ -226,15 +292,33 @@
 <script>
 	
 	import ExhibitionCartItem from '@/components/ExhibitionCartItem.vue';
+	import ButtonToTop from '@/components/ButtonToTop.vue';
 	import {ibg} from '@/assets/js/ibg.js';
+	import { onMounted } from '@vue/runtime-core';
+	import $ from 'jquery';
 
 	export default {
 		components: {
 			ExhibitionCartItem,
+			ButtonToTop,
 		},
 		name: 'PageHome',
 		setup() {
+			onMounted(()=> {
+				setFullScreen();
+			});
+
 			ibg();
+
+			function setFullScreen() {
+				const $headerHeight = $('header').outerHeight();
+				const $firstScreen = $('.welcome');
+				$($firstScreen).height($(window).height() - $headerHeight);
+			}
+			
+			return {
+				setFullScreen,
+			}
 		},
 		
 	}

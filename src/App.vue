@@ -21,14 +21,13 @@ export default {
 	},
 	setup() {
 		return {
-			
 		}
 	}
 }
 </script>
 
 <style lang="scss">
-	@import './scss/style';
+	@import "@/assets/scss/style";
 	
 	// route transtiions
 	.route-enter-from, .route-leave-to{

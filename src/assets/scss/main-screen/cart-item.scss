@@ -2,26 +2,24 @@
 	height: 100%;
 	cursor: pointer;
 
-
-
 	position: relative;
+	transition: all 0.5s ease;
 
-	&__bg {}
-
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	&__flex {
+		flex: 1;
+		transition: flex 0.5s ease;
+	}
 	&__info {
-		position: absolute;
-		width: inherit;
+		flex: 0;
+		max-height: fit-content;
 		padding: 16px;
-		bottom: 0;
-		top: auto;
-		left: 0;
-		right: 0;
-
 		background: rgba(21, 26, 19, 0.61);
 		color: $DarkWhite;
 		margin: 0 24px 24px 24px;
-		height: auto;
-
+		transition: all 0.5s ease;
 		@media (max-width: (860 + 'px')) {
 			padding: 4px;
 			margin: 0;
@@ -71,42 +69,26 @@
 		}
 	}
 
-
-
-
-
 	&:hover {
+		
+		.cart-exhibitions {
+			
+		}
+		.hovered {
+			flex: 0.001;
+		}
 		.cart-exhibitions__info {
-
-			padding: 16px 40px 40px 40px;
-
+			flex: auto;
 			margin: 0;
-			animation-duration: 0.2s;
-			animation-name: cartAnimation;
-			animation-fill-mode: forwards;
+			padding: 16px 40px 40px 40px;
 		}
 	}
 
 	@media (max-width: 860px) {
 		&:hover {
 			.cart-exhibitions__info {
-
 				padding: 4px;
-
-
 			}
 		}
-	}
-}
-
-@keyframes cartAnimation {
-	0% {
-
-		top: 50%;
-	}
-
-	100% {
-
-		top: 0;
 	}
 }
