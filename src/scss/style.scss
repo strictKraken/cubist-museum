@@ -1,0 +1,38 @@
+@import './_fonts';
+$fontFamily: 'Inconsolata', monospace;
+@import './nullstyle';
+@import './vars';
+@import './global';
+@import './libs';
+
+//---------------HEADER-----------------//
+@import './header/header';
+
+//---------------FOOTER-----------------//
+@import './footer/footer.scss';
+
+//---------------MAIN_SCREEN--------------//
+@import './main-screen/main-screen';
+
+//------------EXHIBITIONS-PAGE---------------//
+@import './exhibitions-page/exhibitions-page';
+@import './exhibitions-page/exhibitions-page-adaptive';
+
+//---------------EXHIBITION-article--------------//
+@import './exhibitions-page/exhibition-tamplate';
+@import './exhibitions-page/exhibition-tamplate-adaptive';
+
+//---------------PAGE_RESERVATION-------------------//
+@import './reservation/reservation';
+@import './reservation/reservation-adaptive';
+
+//-------------------SUCCESSFUL_PAYMENT-------------------//
+@import './successful/successful';
+
+//----------------PAGE_404----------------------//
+@import './errore-page/errore-page.scss';
+
+
+//-------------------My-slider---------------------//
+@import './slider';
+

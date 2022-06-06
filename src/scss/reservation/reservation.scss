@@ -1,0 +1,598 @@
+@import './file-input';
+
+
+.reservation {
+	overflow: hidden;
+
+	&__container {
+		//padding-bottom: 128px;
+	}
+
+	&__bg-main {
+		position: relative;
+		overflow: hidden;
+	}
+
+	&__title {
+		position: absolute;
+		text-align: center;
+		bottom: -20%;
+
+		h2 {
+			font-size: calc(25vw - 0.5vh);
+		}
+	}
+
+	//-----------content---------------//
+	&__content {
+		display: grid;
+		grid-template-columns: 65% 35%;
+		column-gap: 24px;
+		grid-template-rows: minmax(auto, 1fr) auto auto;
+		grid-template-areas: "content aside"
+		"content price"
+		"btn .";
+		padding: 32px 0 128px 0;
+		row-gap: 32px;
+	}
+
+	&__form {
+		grid-area: content;
+	}
+	&__aside {
+		grid-area: aside;
+	}
+	&__price-total {
+		grid-area: price;
+	}
+
+
+	&__steps {
+		margin-bottom: 48px;
+	}
+
+	&__free-sits {
+		color: $DarkGreen;
+		margin-bottom: 32px;
+		font-size: 16px;
+		line-height: calc(17 / 16 * 100%);
+	}
+
+	&__form-step {}
+
+	&__cart {
+		pointer-events: none;
+		max-height: 580px;
+		margin-bottom: 32px;
+	}
+
+	&__price {}
+
+	&__navigation {
+		grid-area: btn;
+		display: flex;
+		justify-content: space-between;
+		align-items: flex-start;
+	}
+
+	&__btn-prev {
+		display: none;
+		cursor: pointer;
+		max-width: 286px;
+
+	}
+
+	&__btn-next {
+		cursor: pointer;
+		max-width: 286px;
+	}
+}
+
+.steps-line {
+	display: flex;
+
+	position: relative;
+	justify-content: space-between;
+	max-width: 565px;
+
+	font-family: $RedHat;
+
+	&__progress {
+		position: absolute;
+
+		width: 80%;
+		top: 25%;
+		left: 8.5%;
+
+		height: 3px;
+		background-image: linear-gradient(90deg, $DarkGreen, $DarkGreen 50%, transparent 50%, transparent 100%);
+		background-size: 24px 1px;
+		border: none;
+	}
+
+	&__progress-line {
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 3px;
+		background-color: $DarkGreen;
+		width: 0%;
+	}
+
+	&__step {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	&__step-style {
+		font-weight: 700;
+		font-size: 18px;
+		line-height: calc(24 / 18 * 100%);
+
+		position: relative;
+		margin-bottom: 16px;
+	}
+
+	&__number {
+		position: absolute;
+		top: 25%;
+		left: 50%;
+		transform: translate(-50%, -25%);
+	}
+
+	&__text {
+		font-family: $RedHat;
+		font-size: 14px;
+		line-height: calc(19 / 15 * 100%);
+		font-weight: 600;
+		color: $Black;
+	}
+
+}
+
+.form-reservation {
+	font-size: 16px;
+
+	&__form-active {
+		display: block;
+	}
+
+	display: none;
+
+	&__section-name {
+		color: $Black;
+		font-family: $RedHat;
+		font-weight: 700;
+		font-size: 18px;
+		line-height: calc(24 / 18 * 100%);
+
+		margin-bottom: 24px;
+
+		div {
+			margin-left: 16px;
+			background-color: transparent;
+		}
+
+		display: flex;
+		align-items: center;
+	}
+
+	&__date-pick {
+		display: flex;
+		gap: 55px;
+		margin-bottom: 48px;
+
+	}
+
+	&__date-btn {}
+
+	&__time-pick {
+		display: flex;
+		gap: 55px;
+		margin-bottom: 48px;
+	}
+
+	//tickets
+	&__ticket-block {
+		margin-bottom: 48px;
+	}
+
+	&__ticket-pick {}
+
+	&__upload-file {
+		display: none;
+		max-width: 344px;
+	}
+
+	&__date-pick-active {}
+
+	&__contacts-item {
+		position: relative;
+		display: flex;
+		align-items: center;
+
+		max-width: 286px;
+		margin-bottom: 16px;
+		input {
+			display: none;
+
+			&:checked~.form-reservation__checkbox-fake {
+				&::before {
+					display: block;
+				}
+			}
+		}
+	}
+
+	&__contacts-mail {
+		display: none;
+		margin-bottom: 16px !important;
+	}
+
+	&__checkbox-fake {
+		flex: 0 0 auto;
+		justify-items: flex-end;
+		border: 1px solid $DarkGreen;
+		width: 20px;
+		height: 20px;
+
+
+		position: relative;
+
+		&::before {
+			content: '';
+			position: absolute;
+			width: 14px;
+			height: 14px;
+
+			background-color: $DarkGreen;
+
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			display: none;
+		}
+	}
+
+	&__contacts-text {
+		margin-left: 10px;
+		flex: 1 1 100%;
+	}
+
+	&__input {
+		border: 1px solid $DarkGrey;
+		color: $Black;
+		padding: 15px 16px;
+		font-size: 16px;
+		margin-bottom: 48px;
+		min-width: 286px;
+		position: relative;
+
+		&::placeholder {
+			color: $Gray;
+		}
+	}
+
+	&__add-new {
+		max-width: 286px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+
+		margin-top: 48px;
+		margin-bottom: 50px;
+
+		.form-reservation__section-name {
+			margin: 0;
+			color: $DarkGrey;
+		}
+	}
+
+
+	&__add-btn {
+		background-color: transparent;
+	}
+
+	&__help {
+		position: relative;
+
+		cursor: pointer;
+
+		&:hover {
+
+			&::after,
+			&::before {
+				opacity: 1;
+			}
+		}
+
+		&::after,
+		&::before {
+			opacity: 0;
+			transition: opacity 0.4s ease 0s;
+			pointer-events: none;
+		}
+
+		&::before {
+			content: '';
+			position: absolute;
+			border-left: 8px solid transparent;
+			border-top: 6px solid transparent;
+			border-bottom: 6px solid transparent;
+			border-right: 8px solid $DarkWhite;
+
+			right: -15px;
+			top: 5px;
+
+		}
+
+		&::after {
+			content: 'Here will come the link to the invitation to the tour';
+			position: absolute;
+
+			top: -5px;
+			left: 13px;
+			background: $DarkWhite;
+			margin-left: 26px;
+			width: 181px;
+			height: 125px;
+			font-weight: 400;
+			color: $DarkGreen;
+			font-size: 16px;
+			line-height: 17px;
+			padding: 13px 14px;
+		}
+	}
+
+	//page payment
+	&__payment {
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+		margin-bottom: 16px;
+		max-width: 286px;
+
+		svg {
+			width: 32px;
+			height: 32px;
+			margin-right: 8px;
+		}
+
+		input {
+			display: none;
+
+			&:checked~.form-reservation__radio-fake {
+				&::after {
+					opacity: 1;
+				}
+			}
+		}
+	}
+
+	&__payment-name {
+		flex: 1 1 100%;
+	}
+
+	&__radio-fake {
+		flex: 0 0 20px;
+		height: 20px;
+		width: 20px;
+		border: 1px solid $DarkGreen;
+		border-radius: 50%;
+		position: relative;
+
+		&::after {
+			opacity: 0;
+			content: '';
+			position: absolute;
+			border-radius: 50%;
+			background-color: $DarkGreen;
+			width: 14px;
+			height: 14px;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+		}
+	}
+	&__errore-input {
+		border: 1px solid #FF0E0D;
+		position: relative;
+	}
+	&__errore-input-text {
+		color: #F51010;
+		font-family: $Roboto;
+		font-size: 13px;
+		line-height: calc(15 / 13 * 100%);
+
+		margin-bottom: 4px;
+		display: none;
+	}
+}
+
+.radio-btn-rectangle {
+	&__lable {
+		position: relative;
+		color: $Black;
+		font-size: 16px;
+		line-height: calc(17 / 16 * 100%);
+
+		input {
+
+			&:checked~.radio-btn-rectangle__day {
+				color: $DarkGreen;
+			}
+
+			&:checked~.radio-btn-rectangle__time {
+				color: $DarkGreen;
+			}
+
+			&:checked~.radio-btn-rectangle__border {
+				display: block;
+			}
+		}
+	}
+
+	&__input {
+		display: none;
+	}
+
+	&__border {
+		display: none;
+
+		position: absolute;
+
+		top: -21px;
+		left: -21px;
+		right: -21px;
+		bottom: -21px;
+		padding: 17px 18px 19px 21px;
+		border: 1px solid $DarkGreen;
+	}
+}
+
+
+.ticket-pick {
+	display: grid;
+	grid-template-columns: 50% 20% auto;
+	align-items: center;
+
+
+	font-size: 16px;
+	line-height: calc(17 / 16 * 100%);
+
+	max-width: 344px;
+
+	color: $Black;
+
+	margin-bottom: 24px;
+
+	&__ticket {
+		flex: 1 1 auto;
+		display: flex;
+		justify-content: space-between;
+	}
+
+	
+
+	&__count {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	&__number {
+		flex: 0 auto;
+		margin: 0 8px;
+		border: 1px solid $DarkGreen;
+		border-radius: 50%;
+		width: 32px;
+		height: 32px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		input {
+			display: none;
+		}
+
+	}
+
+	&__btn-left,
+	&__btn-right {
+		cursor: pointer;
+		height: 100%;
+		background-color: transparent;
+	}
+
+	&__number-error {
+		border: 1px solid #F51010;
+	}
+
+	&__number-file-errore {
+		border: 1px solid #F51010;
+	}
+}
+
+
+.price-reservation {
+	max-width: 263px;
+
+	&__title {
+		color: $Black;
+		margin-bottom: 16px;
+		font-family: $RedHat;
+		font-weight: 700;
+		font-size: 18px;
+		line-height: calc(24 / 18 * 100%);
+	}
+
+	&__items {
+		position: relative;
+
+		&::after {
+			content: '';
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			height: 2px;
+			background-color: $DarkGreen;
+		}
+
+		padding-bottom: 16px;
+		margin-bottom: 16px;
+	}
+
+	&__item {
+
+		font-size: 16px;
+		line-height: calc(17 / 16 * 100%);
+		display: flex;
+		justify-content: space-between;
+
+		&:not(:last-child) {
+			margin-bottom: 16px;
+		}
+
+		//display: none;
+	}
+
+	&__name {
+		flex: 1 1 60%;
+	}
+
+	&__price {
+		flex: 0 0 30%;
+	}
+
+	&__count {
+		flex: 0 0 10%;
+	}
+
+	&__total {
+		color: $Black;
+		margin-bottom: 16px;
+		font-family: $RedHat;
+		font-weight: 700;
+		font-size: 18px;
+		line-height: calc(24 / 18 * 100%);
+	}
+}
+
+.active-steps {
+	svg {
+		path {
+			fill: $DarkGreen;
+		}
+	}
+}
+
+
+.form-reservation__checkbox {
+	&:checked~.form-reservation__contacts-item {
+		&::before {
+			display: block;
+		}
+	}
+}

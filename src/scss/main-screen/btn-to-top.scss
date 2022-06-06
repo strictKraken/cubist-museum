@@ -1,0 +1,30 @@
+.btn-to-top {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+	background-color: transparent;
+
+	margin: 0 auto;
+
+	&__link {
+		margin-bottom: 16px;
+
+		&:hover {
+			svg {
+				path {
+					fill: $LightGreen;
+				}
+			}
+
+			.btn-to-top__text {
+				color: $LightGreen;
+			}
+		}
+	}
+
+	&__text {
+		color: $DarkGreen;
+	}
+
+}

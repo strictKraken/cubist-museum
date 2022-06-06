@@ -1,0 +1,89 @@
+@media (max-width: 1160px) {
+    .page-exhibition {
+        &__сontainer {
+            column-gap: 50px;
+        }
+    }
+}
+@media (max-width: 820px) {
+    .page-exhibition {
+        &__сontainer {
+            column-gap: 20px;       
+        }
+        &__descriptions {
+            padding: 16px 26px;
+        }
+        &__btn {
+            padding-top: 32px;
+            padding-bottom: 32px;
+        }
+    }
+}
+@media (max-width: 720px) {
+    .page-exhibition {
+        &__сontainer {
+            grid-template-columns: 1fr;
+        }
+        &__aside {
+            padding-bottom: 32px;
+            padding-left: 16px;
+        }
+        &__content {
+            flex-direction: column;
+        }
+        &__text {
+            margin-bottom: 32px;
+        }
+        &__title-reviews {
+            font-size: 45px;
+            margin-bottom: 32px;
+        }
+    }
+     
+    .reviews {
+        
+        &__item {
+            flex: 0 0;
+            min-height: none;
+            display: block;
+        }
+    }
+    .aside-menu {
+        &__item {
+            &:not(:last-child) {
+                margin-bottom: 32px;
+            }
+        }
+        &__FAQ {
+            font-size: 24px;
+            margin-bottom: 32px;
+        }
+    }
+}
+@media (max-width: 500px) {
+    .page-exhibition {
+        &__descriptions {
+            padding: 0;
+            padding-top: 32px;
+            margin-top: 0;
+            & .online {
+                margin-bottom: 16px;
+            }
+        }
+        &__btn {
+            display: none;
+            
+        }
+       
+        &__share {
+            margin-bottom: 24px;
+        }
+        &__title {
+            margin-bottom: 16px;
+        }
+        
+    }
+    .aside-menu {
+        padding-left: 0;
+    }
+}

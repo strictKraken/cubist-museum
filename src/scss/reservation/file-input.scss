@@ -1,0 +1,37 @@
+.upload-file {
+
+	margin-bottom: 24px;
+
+	&__input {
+		width: 0.1px;
+		height: 0.1px;
+		opacity: 0;
+		overflow: hidden;
+		position: absolute;
+		z-index: -1;
+	}
+
+	&__label {
+		display: flex;
+		cursor: pointer;
+	}
+
+	&__logo {
+		margin-right: 16px;
+	}
+
+	&__content {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+
+	&__text {
+		display: block;
+	}
+
+	&__info-text {
+		display: block;
+		color: $DarkGreen;
+	}
+}

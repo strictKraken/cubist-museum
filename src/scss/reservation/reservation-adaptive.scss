@@ -1,0 +1,61 @@
+@media(max-width:1000px) {   
+    .reservation {
+        &__content {
+            grid-template-columns: 1fr;
+            grid-template-rows: 300px 1fr auto auto;
+            grid-template-areas: "aside"
+            'content'
+            'price'
+            'btn';
+            padding-top: 24px;
+        }
+    }
+}
+@media (max-width: 720px) {
+    .form-reservation {
+        &__date-pick {
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+        &__time-pick {
+            flex-wrap: wrap;
+        }
+    }
+    
+    .ticket-pick__btn-right, .ticket-pick__btn-left {
+        margin: 1px;
+        font-size: 30px;
+    }   
+
+    .steps-line {
+        &__number {
+            font-size: 15px;
+        }
+    }
+}
+@media (max-width: 620px) {
+    .reservation {
+        &__content {
+            grid-template-rows: 150px 1fr auto;
+        }
+
+        &__btn-prev {
+           
+        }
+        &__navigation {
+            gap: 24px;
+        }
+    }
+    .steps-line {
+        &__step-style {
+            svg {
+                width: 62px;
+                height: 50px;
+            }
+        }
+        &__number {
+            font-size: 15px;
+        }
+    }
+   
+}

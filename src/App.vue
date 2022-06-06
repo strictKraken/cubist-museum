@@ -1,30 +1,43 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+	<div class="wrapper">
+		<div class="main">
+			<main-layout>
+					<router-view v-slot="{ Component, route}">
+						<transition name="route" mode="out-in">
+							<component :is="Component" :key="route.path"></component>
+						</transition>
+					</router-view>
+			</main-layout>
+		</div>
+	</div>
 </template>
 
+<script>
+import MainLayout from '@/layout/MainLayout.vue';
+
+export default {
+	components: {
+		MainLayout,
+	},
+	setup() {
+		return {
+			
+		}
+	}
+}
+</script>
+
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
+	@import './scss/style';
+	
+	// route transtiions
+	.route-enter-from, .route-leave-to{
+		opacity: 0;
+	}
+	.route-enter-active, .route-leave-active {
+		transition: opacity 0.5s ease;
+	}
+	.route-enter-to, .route-leave-from {
+		//opacity: 1;
+	}
 </style>

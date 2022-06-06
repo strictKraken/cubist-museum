@@ -1,0 +1,128 @@
+.slick-track {
+    display: flex;
+}
+
+.slick-slide {
+    margin: 0 36px;
+    max-width: 453px;
+}
+
+.slick-list {
+    overflow: hidden;
+    margin: 0 -36px;
+}
+
+//slider
+
+.slider {
+    &__btns {
+        display: flex;
+        justify-content: center;
+        gap: 95px;
+    }
+    &__prev-btn {
+        width: 167px;
+        height: 167px;
+        // background: url('./../img/icons/Arrow-left.svg') 0 0 no-repeat;
+        background-position: center;
+        &:hover {
+            background-color: #D8DFDE;
+        }
+        border: 1px solid $DarkGreen;
+        border-radius: 50%;
+    }
+    &__next-btn {
+        width: 167px;
+        height: 167px;
+        // background: url('./../img/icons/Arrow-right.svg') 0 0 no-repeat;
+        background-position: center;
+        &:hover {
+            background-color: #D8DFDE;
+        }
+        border: 1px solid $DarkGreen;
+        border-radius: 50%;
+    }
+    position: relative;
+    .slick-arrow {
+       // position: absolute;
+        top: 100%;
+        //z-index: 1;
+        font-size: 0;
+        width: 167px;
+        height: 167px;
+        border-radius: 50%;
+        border: 1px solid $DarkGreen;
+
+       
+        
+    }
+    .slick-arrow.slick-prev {
+        left: 38%;
+        
+        // background: url('./../img/icons/Arrow-left.svg') 0 0 no-repeat;
+        background-position: center;
+        &:hover {
+            background-color: #D8DFDE;
+        }
+    }
+    .slick-arrow.slick-next {
+        right: 38%;
+     
+        // background: url('./../img/icons/Arrow-right.svg') 0 0 no-repeat;
+        background-position: center;
+        &:hover {
+            background-color: #D8DFDE;
+        }
+    }
+    .slick-dots {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        transition: all 0.2s ease 0s;
+    }
+    .slick-dots li {
+        margin: 32px 8px 64px 8px;
+    }
+    .slick-dots button {
+        font-size: 0;
+        width: 16px;
+        height: 16px;
+        background-color: #D8DFDE;
+        border-radius: 50%;
+        animation-name: dotsAnimmation2;
+        animation-duration: 0.5s;
+    }
+    .slick-dots li.slick-active button{
+        background-color: $DarkGreen;
+        //width: 32px;
+        border-radius: 0%;
+        overflow: hidden;
+        border-radius: 100px;
+    }
+    .slick-dots li.slick-active button {
+        animation-name: dotsAnimation;
+        animation-duration: 0.5s;
+        animation-fill-mode: forwards;
+    }
+}
+@keyframes dotsAnimmation2 {
+    0% {
+        width: 32px;
+    }
+    100% {
+        width: 16px;
+    }
+}
+
+
+@keyframes dotsAnimation {
+    0% {
+        width: 16px;
+    }
+    100% {
+        width: 32px;
+    }
+}
+
+

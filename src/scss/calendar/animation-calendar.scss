@@ -1,0 +1,15 @@
+.slide-item-to-right {
+	animation-name: slide-item-to-right;
+	animation-duration: 0.5s;
+
+}
+
+@keyframes slide-item-to-right {
+	0% {
+		transform: translate();
+	}
+
+	100% {
+		transform: translate(var(--slide), );
+	}
+}
