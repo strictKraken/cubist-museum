@@ -24,33 +24,28 @@
 						</router-link>
 					</transition>
 				</div>
-					<!-- <div class="welcome__img-bg-right"> -->
-						<transition-group class="welcome__img-bg-right" name="fade-rightImg" appear tag="ul" enter-active-class="fade-leftImg-enter-from">
-<!-- 							
-							<li v-for="i in (1 to 7)" class="welcome__img-item">
-								<img src="`@/img/Content/main-page/${i+1}.jpg`" alt="bg"></img>
-							</li>
-							<li  class="welcome__img-item">
-								
-							</li>
-							<li class="welcome__img-item">
+					<transition @before-enter="onBeforeEnter" @enter="onEnter" name="fade-rightImg" appear>
+						<div class="welcome__img-bg-right">				
+							<div  class="welcome__img-item">
+								<img src="@/img/Content/main-page/2.jpg" alt="bg">		
+							</div>
+							<div class="welcome__img-item">
 								<img src="@/img/Content/main-page/3.jpg" alt="bg">
-							</li>
-							<li class="welcome__img-item">
+							</div>
+							<div class="welcome__img-item">
 								<img src="@/img/Content/main-page/4.jpg" alt="bg">
-							</li>
-							<li class="welcome__img-item">
+							</div>
+							<div class="welcome__img-item">
 								<img src="@/img/Content/main-page/5.jpg" alt="bg">
-							</li>
-							<li class="welcome__img-item">
+							</div>
+							<div class="welcome__img-item">
 								<img src="@/img/Content/main-page/6.jpg" alt="bg">
-							</li>
-							<li class="welcome__img-item">
+							</div>
+							<div class="welcome__img-item">
 								<img src="@/img/Content/main-page/7.jpg" alt="bg">
-							</li> -->
-						</transition-group>	
-					<!-- </div> -->
-				
+							</div> 
+						</div>
+					</transition>
 			</div>
 		</section>
 
@@ -231,6 +226,7 @@
 
 	import { onMounted, onUnmounted } from '@vue/runtime-core';
 	import $ from 'jquery';
+	import gsap from 'gsap';
 
 	export default {
 		components: {
@@ -257,7 +253,37 @@
 				const $firstScreen = $('.welcome');
 				$($firstScreen).height($(window).height() - $headerHeight);
 			}
+
+			function onBeforeEnter(el) {
+				let $listImg =  $(el.children);
+				for(let i = 0; i < $listImg.length ; i++) {
+					if(i % 2 == 0) {
+						$($listImg[i]).css({
+						'transform': `translateY(-101%)`,
+						})
+					} else {
+						$($listImg[i]).css({
+						'transform': `translateY(100%)`,
+						})
+					}	
+				}
+			}
 			
+			function onEnter(el) {
+				let $listImg = $(el.children);
+				let duration = 0;
+
+				$listImg.each(function(inedex,value) {
+					gsap.to(value, {
+						duration: 1,
+						delay: duration,
+						y: 0
+					})
+					duration += 0.1;
+				})
+				
+			}
+
 			let ExhibitionsList = [
 				{
 					name: 'Exhibition of works by Bela Kadar',
@@ -278,6 +304,8 @@
 
 			return {
 				ExhibitionsList,
+				onEnter,
+				onBeforeEnter,
 			}
 		},
 		
@@ -285,11 +313,12 @@
 </script>
 
 <style lang='scss'>
-
+	
 	//Aanimation for block title on main screen
 	.fade-title-enter-from, .fade-subtitle-enter-from, .fade-btnWelcome-enter-from {
 		transform: translateY(100px);
 		opacity: 0;
+		
 	}
 	
 	.fade-title-enter-to, .fade-subtitle-enter-to,  .fade-btnWelcome-enter-to{
@@ -322,19 +351,12 @@
 	}
 
 	//right
-	.fade-rightImg-enter-active {
-		transition: all 1s ease 0.5s;
-	}
-
 	.fade-rightImg-enter-from {
 		opacity: 0;
-		transform: translateY(-50%);
 	}
 	.fade-rightImg-enter-to {
-		opacity: 1;				
-		transform: translateY(0);
 	}
-
-
-
+	.fade-rightImg-enter-active {
+		// transition: all 1s ease 0.5s;
+	}
 </style>

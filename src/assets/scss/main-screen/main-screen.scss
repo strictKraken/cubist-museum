@@ -2,7 +2,7 @@
 @import './btn-to-top';
 
 .welcome {
-	
+	overflow-y: hidden;
 	&__content {
 		height: 100%;
 		display: flex;
