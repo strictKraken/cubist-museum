@@ -10,11 +10,11 @@
 					<burger-bar/>
 					<search-input/>
 					<ul class="menu__list">
-						<li class="menu__item"><router-link class="menu__link" :to="{name: 'Home'}">Home</router-link></li>
-						<li class="menu__item"><router-link class="menu__link" :to="{name: 'Exhibitions'}">Exhibitions and events </router-link></li>
-						<li class="menu__item"><router-link class="menu__link" to="/404">Tickets</router-link></li>
-						<li class="menu__item"><router-link class="menu__link" to="/404">Collection</router-link></li>
-						<li class="menu__item"><router-link class="menu__link" to="/404">About</router-link></li>
+						<li class="menu__item" @click="clickLink"><router-link class="menu__link" :to="{name: 'Home'}">Home</router-link></li>
+						<li class="menu__item" @click="clickLink"><router-link class="menu__link" :to="{name: 'Exhibitions'}">Exhibitions and events </router-link></li>
+						<li class="menu__item" @click="clickLink"><router-link class="menu__link" to="/404">Tickets</router-link></li>
+						<li class="menu__item" @click="clickLink"><router-link class="menu__link" to="/404">Collection</router-link></li>
+						<li class="menu__item" @click="clickLink"><router-link class="menu__link" to="/404">About</router-link></li>
 					</ul>
 				</div>
 			</nav>
@@ -27,6 +27,9 @@
 <script>
 	import BurgerBar from './HeaderMenuBurgerBar.vue';
 	import SearchInput from './HeaderMenuSearchInput.vue';
+
+	import $ from 'jquery';
+
 	export default {
 		name: 'NavigationBar',
 		components: {
@@ -34,9 +37,18 @@
 			SearchInput,
 		},
 		setup() {
+			const clickLink = () =>{
+				$('.menu__body,.header__burger').removeClass('active');
+				$('.search').removeClass('active-search');
+				$('body,html').removeClass('lock');
+			}
+			return {
+				clickLink,
+			}
 		},
 	}
 </script>
 
 <style lang='scss'>
+
 </style>

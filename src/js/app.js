@@ -1,8 +1,8 @@
 import * as flsFunctions from "./modules/function.js";
-import imgToSvg from "./modules/imgToSvg.js";
+import imgToSvg from "../assets/js/imgToSvg.js";
 import activeSearh from "./modules/acitve-search.js";
-import burger from "./modules/burger.js";
-import activeSpoiler from "./modules/active-spoiler.js";
+import burger from "../assets/js/burger.js";
+import activeSpoiler from "../assets/js/active-spoiler.js";
 import * as ibg from "./modules/ibg.js";
 import scrollToTop from "./modules/scrollToTop.js";
 import * as calendar from "./modules/calendar.js";

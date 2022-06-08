@@ -48,6 +48,7 @@
 
 		@media (max-width: 880px) {
 			padding: 0 8px 15px 8px;
+			justify-content: center;
 		}
 
 	}
@@ -70,25 +71,7 @@
 		}
 	}
 
-	&__btn {
-		max-width: 160px;
-		cursor: pointer;
-
-		&:hover {
-			svg {
-				path {
-					fill: $DarkWhite;
-				}
-			}
-		}
-
-		@media (max-width: 590px) {
-			svg {
-				width: 88px;
-				height: 88px;
-			}
-		}
-	}
+	
 
 	&__img-bg-right {
 		display: flex;

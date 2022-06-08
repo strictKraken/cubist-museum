@@ -1,9 +1,6 @@
 <template>
 	<div class="exhibitions__cart cart-exhibitions _ibg">
 		<slot name='image'></slot>
-		<div class="cart-echibitions__flex hovered">
-		</div>
-
 		<div class="cart-exhibitions__info">
 			<div class="cart-exhibitions__online">
 				<span class="bg-red">
@@ -22,7 +19,6 @@
 				<slot name='about'></slot>
 			</p>
 		</div>
-		
 	</div>
 </template>
 
@@ -33,9 +29,7 @@ export default {
 	setup() {
 		onMounted(()=> {
 				ibg();
-			});
-
-
+		});
 		return {
 			
 		}

@@ -2,40 +2,55 @@
 	<div>
 		<section class="welcome">
 			<div class="welcome__content">
-				<div class="welcome__img-bg-left">
-					<img src="@/img/Content/main-page/1.jpg" alt="bg">
-				</div>
+				<transition name="fade-leftImg" appear>
+					<div class="welcome__img-bg-left">					
+						<img src="@/img/Content/main-page/1.jpg" alt="bg">
+					</div>
+				</transition>
 				<div class="welcome__main-block">
-					<h2 class="welcome__title title-h2">
-						Welcome to the online future
-					</h2>
-					<p class="welcome__text">
-						Visit exhibitions in the comfort of your own home
-					</p>
-					<a class="welcome__btn">
-						<img src="@/img/icons/big-arrow.svg" alt="" class="img-svg">
-					</a>
+					<transition name="fade-title" appear>
+						<h2 class="welcome__title title-h2">
+							Welcome to the online future
+						</h2>
+					</transition>
+					<transition name="fade-subtitle" appear>
+							<p class="welcome__text">
+							Visit exhibitions in the comfort of your own home
+						</p>
+					</transition>
+					<transition name="fade-btnWelcome" appear>
+						<router-link :to="{name: 'Exhibitions' }" class="welcome__btn">
+							<icon-big-arrow class="welcome__btn"/>
+						</router-link>
+					</transition>
 				</div>
-				<div class="welcome__img-bg-right ">
-					<div class="welcome__img-item">
-						<img src="@/img/Content/main-page/2.jpg" alt="bg">
-					</div>
-					<div class="welcome__img-item">
-						<img src="@/img/Content/main-page/3.jpg" alt="bg">
-					</div>
-					<div class="welcome__img-item">
-						<img src="@/img/Content/main-page/4.jpg" alt="bg">
-					</div>
-					<div class="welcome__img-item">
-						<img src="@/img/Content/main-page/5.jpg" alt="bg">
-					</div>
-					<div class="welcome__img-item">
-						<img src="@/img/Content/main-page/6.jpg" alt="bg">
-					</div>
-					<div class="welcome__img-item">
-						<img src="@/img/Content/main-page/7.jpg" alt="bg">
-					</div>
-				</div>
+					<!-- <div class="welcome__img-bg-right"> -->
+						<transition-group class="welcome__img-bg-right" name="fade-rightImg" appear tag="ul" enter-active-class="fade-leftImg-enter-from">
+<!-- 							
+							<li v-for="i in (1 to 7)" class="welcome__img-item">
+								<img src="`@/img/Content/main-page/${i+1}.jpg`" alt="bg"></img>
+							</li>
+							<li  class="welcome__img-item">
+								
+							</li>
+							<li class="welcome__img-item">
+								<img src="@/img/Content/main-page/3.jpg" alt="bg">
+							</li>
+							<li class="welcome__img-item">
+								<img src="@/img/Content/main-page/4.jpg" alt="bg">
+							</li>
+							<li class="welcome__img-item">
+								<img src="@/img/Content/main-page/5.jpg" alt="bg">
+							</li>
+							<li class="welcome__img-item">
+								<img src="@/img/Content/main-page/6.jpg" alt="bg">
+							</li>
+							<li class="welcome__img-item">
+								<img src="@/img/Content/main-page/7.jpg" alt="bg">
+							</li> -->
+						</transition-group>	
+					<!-- </div> -->
+				
 			</div>
 		</section>
 
@@ -99,7 +114,7 @@
 					<span class="bg-green">Exhibitions</span>
 				</h3>
 				<div class="exhibitions__content">
-					<exhibition-cart-item class="cart1">
+					<exhibition-cart-item class="cart1" v-model="ExhibitionsList">
 						<template v-slot:image>
 							<img class="cart-exhibitions__bg " src="@/img/Content/exhibitions/1.jpg" alt="bg">
 						</template>
@@ -107,17 +122,18 @@
 							Online
 						</template>
 						<template v-slot:title>
-								Exhibition of works by Bela Kadar
+							{{ ExhibitionsList[0].name }}
 						</template>
 						
 						<template v-slot:date>
-							15 Feb 2022 - 15 Jul 2023
+							{{ ExhibitionsList[0].date }}
 						</template>
 						<template v-slot:about>
-							Béla Kádár (1877–1956) was a Hungarian painter influenced by Der Blaue Reiter, Cubism, Futurism,
-							Neo-Primitivism, Constructivism, and Metaphysical painting.
+							{{ ExhibitionsList[0].shortDescription }}
 						</template>
 					</exhibition-cart-item>
+
+
 					<exhibition-cart-item class="cart2">
 						<template v-slot:image>
 							<img class="cart-exhibitions__bg " src="@/img/Content/exhibitions/1.jpg" alt="bg">
@@ -194,96 +210,14 @@
 							Neo-Primitivism, Constructivism, and Metaphysical painting.
 						</template>
 					</exhibition-cart-item>
-					<!-- <div class="cart2 exhibitions__cart cart-exhibitions _ibg">
-						<img class="cart-exhibitions__bg " src="@/img/Content/exhibitions/1.jpg" alt="">
-						<div class="cart-exhibitions__info">
-							<div class="cart-exhibitions__online">
-								<span class="bg-red">online</span>
-							</div>
-							<h4 class="cart-exhibitions__title">
-								Exhibition of works by Bela Kadar
-							</h4>
-							<div class="cart-exhibitions__date">
-								<p>
-									15 Feb 2022 - 15 Jul 2022
-								</p>
-							</div>
-							<p class="cart-exhibitions__about">
-								Béla Kádár (1877–1956) was a Hungarian painter influenced by Der Blaue Reiter, Cubism, Futurism,
-								Neo-Primitivism, Constructivism, and Metaphysical painting.
-							</p>
-						</div>
-					</div>
-					<div class="cart3 exhibitions__cart cart-exhibitions _ibg">
-						<img class="cart-exhibitions__bg " src="@img/Content/exhibitions/1.jpg" alt="">
-						<div class="cart-exhibitions__info">
-							<div class="cart-exhibitions__online">
-								<span class="bg-red">online</span>
-							</div>
-							<h4 class="cart-exhibitions__title">
-								Exhibition of works by Bela Kadar
-							</h4>
-							<div class="cart-exhibitions__date">
-								<p>
-									15 Feb 2022 - 15 Jul 2022
-								</p>
-							</div>
-							<p class="cart-exhibitions__about">
-								Béla Kádár (1877–1956) was a Hungarian painter influenced by Der Blaue Reiter, Cubism, Futurism,
-								Neo-Primitivism, Constructivism, and Metaphysical painting.
-							</p>
-						</div>
-					</div>
-					<div class="cart4 exhibitions__cart cart-exhibitions _ibg">
-						<img class="cart-exhibitions__bg " src="@img/Content/exhibitions/1.jpg" alt="">
-						<div class="cart-exhibitions__info">
-							<div class="cart-exhibitions__online">
-								<span class="bg-red">online</span>
-							</div>
-							<h4 class="cart-exhibitions__title">
-								Exhibition of works by Bela Kadar
-							</h4>
-							<div class="cart-exhibitions__date">
-								<p>
-									15 Feb 2022 - 15 Jul 2022
-								</p>
-							</div>
-							<p class="cart-exhibitions__about">
-								Béla Kádár (1877–1956) was a Hungarian painter influenced by Der Blaue Reiter, Cubism, Futurism,
-								Neo-Primitivism, Constructivism, and Metaphysical painting.
-							</p>
-						</div>
-					</div>
-					<div class="cart5 exhibitions__cart cart-exhibitions _ibg">
-						<img class="cart-exhibitions__bg " src="@img/Content/exhibitions/1.jpg" alt="">
-						<div class="cart-exhibitions__info">
-							<div class="cart-exhibitions__online">
-								<span class="bg-red">online</span>
-							</div>
-							<h4 class="cart-exhibitions__title">
-								Exhibition of works by Bela Kadar
-							</h4>
-							<div class="cart-exhibitions__date">
-								<p>
-									15 Feb 2022 - 15 Jul 2022
-								</p>
-							</div>
-							<p class="cart-exhibitions__about">
-								Béla Kádár (1877–1956) was a Hungarian painter influenced by Der Blaue Reiter, Cubism, Futurism,
-								Neo-Primitivism, Constructivism, and Metaphysical painting.
-							</p>
-						</div>
-					</div> -->
 					<router-link :to="{name: 'Exhibitions'}" class="exhibitions__cart-more cart-more">
 						<p class="cart-more__text">
 							All exhibitions
 						</p>
-						<div class="cart-more__link" href="#">
-							<img class="img-svg" src="@/img/icons/big-arrow.svg" alt="btn-more">
-						</div>
+						<icon-big-arrow class="cart-more__link"/>
 					</router-link>
 				</div>
-				<button-to-top></button-to-top>
+				<button-to-top/>
 			</div>
 		</section>
 	</div>
@@ -293,22 +227,30 @@
 	
 	import ExhibitionCartItem from '@/components/ExhibitionCartItem.vue';
 	import ButtonToTop from '@/components/ButtonToTop.vue';
-	import {ibg} from '@/assets/js/ibg.js';
-	import { onMounted } from '@vue/runtime-core';
+	import IconBigArrow from '@/components/icons/IconBigArrow.vue';
+
+	import { onMounted, onUnmounted } from '@vue/runtime-core';
 	import $ from 'jquery';
 
 	export default {
 		components: {
 			ExhibitionCartItem,
 			ButtonToTop,
+			IconBigArrow,
 		},
 		name: 'PageHome',
 		setup() {
 			onMounted(()=> {
 				setFullScreen();
+				window.addEventListener('resize', resizeHandler)
 			});
+			onUnmounted(() => {
+				window.removeEventListener('resize', resizeHandler)
+			})
 
-			ibg();
+			function resizeHandler() {
+				setFullScreen();
+			}
 
 			function setFullScreen() {
 				const $headerHeight = $('header').outerHeight();
@@ -316,8 +258,26 @@
 				$($firstScreen).height($(window).height() - $headerHeight);
 			}
 			
+			let ExhibitionsList = [
+				{
+					name: 'Exhibition of works by Bela Kadar',
+					typeOnline: true,
+					date: '15 Feb 2022 - 15 Jul 2023',
+					shortDescription: 'Béla Kádár (1877–1956) was a Hungarian painter influenced by Der Blaue Reiter, Cubism, Futurism, Neo-Primitivism, Constructivism, and Metaphysical painting.',
+					fullDescription: 'Béla Kádár (1877–1956) was a Hungarian painter influenced by Der Blaue Reiter, Cubism, Futurism, Neo-Primitivism, Constructivism, and Metaphysical painting. Béla Kádár (1877–1956) was a Hungarian painter influenced by Der Blaue Reiter, Cubism, Futurism, Neo-Primitivism, Constructivism, and Metaphysical painting.Béla Kádár (1877–1956) was a Hungarian painter influenced by Der Blaue Reiter, Cubism, Futurism, Neo-Primitivism, Constructivism, and Metaphysical painting.Béla Kádár (1877–1956) was a Hungarian painter influenced by Der Blaue Reiter, Cubism, Futurism, Neo-Primitivism, Constructivism, and Metaphysical painting.Béla Kádár (1877–1956) was a Hungarian painter influenced by Der Blaue Reiter, Cubism, Futurism, Neo-Primitivism, Constructivism, and Metaphysical painting.Béla Kádár (1877–1956) was a Hungarian painter influenced by Der Blaue Reiter, Cubism, Futurism, Neo-Primitivism, Constructivism, and Metaphysical painting.Béla Kádár (1877–1956) was a Hungarian painter influenced by Der Blaue Reiter, Cubism, Futurism, Neo-Primitivism, Constructivism, and Metaphysical painting.Béla Kádár (1877–1956) was a Hungarian painter influenced by Der Blaue Reiter, Cubism, Futurism, Neo-Primitivism, Constructivism, and Metaphysical painting.',
+					
+				},
+				{
+					name: 'Exhibition of works by Alice Bailly',
+					typeOnline: false,
+					date: '17 Feb 2022 - 17 May 2022',
+					shortDescription: 'Alice Bailly (25 February 1872 – 1 January 1938) was a Swiss avant-garde painter.',
+					fullDescription: '',
+				}
+			]
+
 			return {
-				setFullScreen,
+				ExhibitionsList,
 			}
 		},
 		
@@ -325,5 +285,56 @@
 </script>
 
 <style lang='scss'>
+
+	//Aanimation for block title on main screen
+	.fade-title-enter-from, .fade-subtitle-enter-from, .fade-btnWelcome-enter-from {
+		transform: translateY(100px);
+		opacity: 0;
+	}
+	
+	.fade-title-enter-to, .fade-subtitle-enter-to,  .fade-btnWelcome-enter-to{
+		opacity: 1;
+		transform: translateY(0px);
+	}
+	.fade-title-enter-active {
+		transition: all 1s ease;
+	}
+	.fade-subtitle-enter-active {
+		transition: all 1s ease 0.3s;
+	}
+	.fade-btnWelcome-enter-active {
+		transition: all 1s ease 0.5s;
+	}
+	//animation for images on main screen
+	//left
+	.fade-leftImg-enter-from {
+		& div:nth-child(n) {
+			opacity: 0;
+			transform: translateY(50%);
+		}
+		
+		opacity: 0;
+		transform: translateY(50%);
+	}
+	.fade-leftImg-enter-active {
+		transition: all 1s ease;
+		
+	}
+
+	//right
+	.fade-rightImg-enter-active {
+		transition: all 1s ease 0.5s;
+	}
+
+	.fade-rightImg-enter-from {
+		opacity: 0;
+		transform: translateY(-50%);
+	}
+	.fade-rightImg-enter-to {
+		opacity: 1;				
+		transform: translateY(0);
+	}
+
+
 
 </style>

@@ -167,10 +167,35 @@
 </template>
 
 <script>
+	import { activeSpoiler } from '@/assets/js/active-spoiler'
+import { onBeforeMount, onMounted, onUnmounted, onUpdated,  } from '@vue/runtime-core'
 	export default {   
 		name: 'FooterMenu',
 		setup() {
 			
+			onBeforeMount(() => {
+				window.addEventListener('resize', resizeHandler);
+			});
+
+			onUnmounted(() => {
+				window.removeEventListener('resize', resizeHandler);
+			})
+	
+			onMounted(()=> {
+				activeSpoiler();
+			})
+			onUpdated(()=> {
+				activeSpoiler();
+			})
+			
+			let resizeHandler = () => {
+				activeSpoiler();
+			}
+
+			return {
+				
+			}
+
 		}
 	}
 </script>
