@@ -1,9 +1,9 @@
 <template>
 	<header class="header">
 		<div class="header__container container">
-			<div class="header__logo">
+			<router-link :to="{name: 'Home'}" class="header__logo">
 				<img class="img-svg" src="@/img/logo-white-2.svg" alt="logo">
-			</div>
+			</router-link>
 
 			<nav class="header__menu menu">
 				<div class="menu__body">

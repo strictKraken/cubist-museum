@@ -14,56 +14,65 @@
 						</h2>
 					</transition>
 					<transition name="fade-subtitle" appear>
-							<p class="welcome__text">
+						<p class="welcome__text">
 							Visit exhibitions in the comfort of your own home
 						</p>
 					</transition>
 					<transition name="fade-btnWelcome" appear>
 						<router-link :to="{name: 'Exhibitions' }" class="welcome__btn">
-							<icon-big-arrow class="welcome__btn"/>
+							<IconBigArrow class="welcome__btn"/>
 						</router-link>
 					</transition>
 				</div>
-					<transition @before-enter="onBeforeEnter" @enter="onEnter" name="fade-rightImg" appear>
-						<div class="welcome__img-bg-right">				
-							<div  class="welcome__img-item">
-								<img src="@/img/Content/main-page/2.jpg" alt="bg">		
-							</div>
-							<div class="welcome__img-item">
-								<img src="@/img/Content/main-page/3.jpg" alt="bg">
-							</div>
-							<div class="welcome__img-item">
-								<img src="@/img/Content/main-page/4.jpg" alt="bg">
-							</div>
-							<div class="welcome__img-item">
-								<img src="@/img/Content/main-page/5.jpg" alt="bg">
-							</div>
-							<div class="welcome__img-item">
-								<img src="@/img/Content/main-page/6.jpg" alt="bg">
-							</div>
-							<div class="welcome__img-item">
-								<img src="@/img/Content/main-page/7.jpg" alt="bg">
-							</div> 
+				<transition @before-enter="onBeforeEnter" @enter="onEnter" name="fade-rightImg" appear>
+					<div class="welcome__img-bg-right">				
+						<div  class="welcome__img-item">
+							<img src="@/img/Content/main-page/2.jpg" alt="bg">		
 						</div>
-					</transition>
+						<div class="welcome__img-item">
+							<img src="@/img/Content/main-page/3.jpg" alt="bg">
+						</div>
+						<div class="welcome__img-item">
+							<img src="@/img/Content/main-page/4.jpg" alt="bg">
+						</div>
+						<div class="welcome__img-item">
+							<img src="@/img/Content/main-page/5.jpg" alt="bg">
+						</div>
+						<div class="welcome__img-item">
+							<img src="@/img/Content/main-page/6.jpg" alt="bg">
+						</div>
+						<div class="welcome__img-item">
+							<img src="@/img/Content/main-page/7.jpg" alt="bg">
+						</div> 
+					</div>
+				</transition>
 			</div>
 		</section>
 
 		<section class="about">
 			<div class="about__container container">
 				<div class="about__content">
-					<h3 class="about__title">
+					<div class="about__box">
+						<h3 class="about__title fade-paragraph">
 						<span class="about__title-style">
 							Cubist museum 1907 - the world's leading museum of art, cubism and performance
 						</span>
 					</h3>
-					<p class="about__sub-title">
+					</div>
+					
+					<div class="about__box">
+						<p class="about__sub-title fade-paragraph">
 						Cubism is not art, it's a way of life
 					</p>
-					<p class="about__text">
+					</div>
+					
+					<div class="about__box">
+						<p class="about__text fade-paragraph">
 						Cubism does not necessarily imply the use of simple geometric shapes. In painting, their use is due
 						primarily to the artist's desire to separate the individual "shreds" of the object from each other.
 					</p>
+				</div>
+					
 				</div>
 				<div class="about__info">
 					<div class="about__info-item info">
@@ -108,110 +117,7 @@
 				<h3 class="exhibitions__title title-green ">
 					<span class="bg-green">Exhibitions</span>
 				</h3>
-				<div class="exhibitions__content">
-					<exhibition-cart-item class="cart1" v-model="ExhibitionsList">
-						<template v-slot:image>
-							<img class="cart-exhibitions__bg " src="@/img/Content/exhibitions/1.jpg" alt="bg">
-						</template>
-						<template v-slot:online>
-							Online
-						</template>
-						<template v-slot:title>
-							{{ ExhibitionsList[0].name }}
-						</template>
-						
-						<template v-slot:date>
-							{{ ExhibitionsList[0].date }}
-						</template>
-						<template v-slot:about>
-							{{ ExhibitionsList[0].shortDescription }}
-						</template>
-					</exhibition-cart-item>
-
-
-					<exhibition-cart-item class="cart2">
-						<template v-slot:image>
-							<img class="cart-exhibitions__bg " src="@/img/Content/exhibitions/1.jpg" alt="bg">
-						</template>
-						<template v-slot:online>
-							Online
-						</template>
-						<template v-slot:title>
-								Exhibition of works by Bela Kadar
-						</template>
-						
-						<template v-slot:date>
-							15 Feb 2022 - 15 Jul 2023
-						</template>
-						<template v-slot:about>
-							Béla Kádár (1877–1956) was a Hungarian painter influenced by Der Blaue Reiter, Cubism, Futurism,
-							Neo-Primitivism, Constructivism, and Metaphysical painting.
-						</template>
-					</exhibition-cart-item>
-					<exhibition-cart-item class="cart3">
-						<template v-slot:image>
-							<img class="cart-exhibitions__bg " src="@/img/Content/exhibitions/1.jpg" alt="bg">
-						</template>
-						<template v-slot:online>
-							Online
-						</template>
-						<template v-slot:title>
-								Exhibition of works by Bela Kadar
-						</template>
-						
-						<template v-slot:date>
-							15 Feb 2022 - 15 Jul 2023
-						</template>
-						<template v-slot:about>
-							Béla Kádár (1877–1956) was a Hungarian painter influenced by Der Blaue Reiter, Cubism, Futurism,
-							Neo-Primitivism, Constructivism, and Metaphysical painting.
-						</template>
-					</exhibition-cart-item>
-					<exhibition-cart-item class="cart4">
-						<template v-slot:image>
-							<img class="cart-exhibitions__bg " src="@/img/Content/exhibitions/1.jpg" alt="bg">
-						</template>
-						<template v-slot:online>
-							Online
-						</template>
-						<template v-slot:title>
-								Exhibition of works by Bela Kadar
-						</template>
-						
-						<template v-slot:date>
-							15 Feb 2022 - 15 Jul 2023
-						</template>
-						<template v-slot:about>
-							Béla Kádár (1877–1956) was a Hungarian painter influenced by Der Blaue Reiter, Cubism, Futurism,
-							Neo-Primitivism, Constructivism, and Metaphysical painting.
-						</template>
-					</exhibition-cart-item>
-					<exhibition-cart-item class="cart5">
-						<template v-slot:image>
-							<img class="cart-exhibitions__bg " src="@/img/Content/exhibitions/1.jpg" alt="bg">
-						</template>
-						<template v-slot:online>
-							Online
-						</template>
-						<template v-slot:title>
-								Exhibition of works by Bela Kadar
-						</template>
-						
-						<template v-slot:date>
-							15 Feb 2022 - 15 Jul 2023
-						</template>
-						<template v-slot:about>
-							Béla Kádár (1877–1956) was a Hungarian painter influenced by Der Blaue Reiter, Cubism, Futurism,
-							Neo-Primitivism, Constructivism, and Metaphysical painting.
-						</template>
-					</exhibition-cart-item>
-					<router-link :to="{name: 'Exhibitions'}" class="exhibitions__cart-more cart-more">
-						<p class="cart-more__text">
-							All exhibitions
-						</p>
-						<icon-big-arrow class="cart-more__link"/>
-					</router-link>
-				</div>
+				<grid-gallery :ExhibitionsList='ExhibitionsList'/>
 				<button-to-top/>
 			</div>
 		</section>
@@ -219,30 +125,60 @@
 </template>
 
 <script>
-	
-	import ExhibitionCartItem from '@/components/ExhibitionCartItem.vue';
 	import ButtonToTop from '@/components/ButtonToTop.vue';
 	import IconBigArrow from '@/components/icons/IconBigArrow.vue';
+	import GridGallery from '@/components/PageHomeGridGallery.vue';
 
-	import { onMounted, onUnmounted } from '@vue/runtime-core';
+	import { onMounted, onUnmounted, onUpdated } from '@vue/runtime-core';
 	import $ from 'jquery';
 	import gsap from 'gsap';
 
 	export default {
 		components: {
-			ExhibitionCartItem,
 			ButtonToTop,
 			IconBigArrow,
+			GridGallery,
 		},
 		name: 'PageHome',
+		props: {
+			ExhibitionsList: {
+				type: Array,
+				require: true,
+			}
+		},
 		setup() {
+			let $fadeInElements = null;
 			onMounted(()=> {
 				setFullScreen();
-				window.addEventListener('resize', resizeHandler)
+				window.addEventListener('resize', resizeHandler);
+
+				$fadeInElements = $('.fade-paragraph');
+				$(document).on('scroll',handleScroll)
 			});
 			onUnmounted(() => {
 				window.removeEventListener('resize', resizeHandler)
+				$(document).off('scroll',handleScroll);
 			})
+			onUpdated(() => {
+				handleScroll()
+			})
+			const handleScroll = () => {
+				$fadeInElements.each(function(index,value) {
+					if(isElemVisible(value)) {
+							$(value).css({
+							opacity: '1',
+							transform: 'translateX(0)'
+						})
+					}
+				})
+			}
+
+			const isElemVisible = (el) => {
+				let rect = el.getBoundingClientRect();
+				let elemTop = rect.top + 200
+				let elemBottom = rect.bottom;
+				return elemTop < window.innerHeight && elemBottom >= 0
+			}
 
 			function resizeHandler() {
 				setFullScreen();
@@ -284,26 +220,7 @@
 				
 			}
 
-			let ExhibitionsList = [
-				{
-					name: 'Exhibition of works by Bela Kadar',
-					typeOnline: true,
-					date: '15 Feb 2022 - 15 Jul 2023',
-					shortDescription: 'Béla Kádár (1877–1956) was a Hungarian painter influenced by Der Blaue Reiter, Cubism, Futurism, Neo-Primitivism, Constructivism, and Metaphysical painting.',
-					fullDescription: 'Béla Kádár (1877–1956) was a Hungarian painter influenced by Der Blaue Reiter, Cubism, Futurism, Neo-Primitivism, Constructivism, and Metaphysical painting. Béla Kádár (1877–1956) was a Hungarian painter influenced by Der Blaue Reiter, Cubism, Futurism, Neo-Primitivism, Constructivism, and Metaphysical painting.Béla Kádár (1877–1956) was a Hungarian painter influenced by Der Blaue Reiter, Cubism, Futurism, Neo-Primitivism, Constructivism, and Metaphysical painting.Béla Kádár (1877–1956) was a Hungarian painter influenced by Der Blaue Reiter, Cubism, Futurism, Neo-Primitivism, Constructivism, and Metaphysical painting.Béla Kádár (1877–1956) was a Hungarian painter influenced by Der Blaue Reiter, Cubism, Futurism, Neo-Primitivism, Constructivism, and Metaphysical painting.Béla Kádár (1877–1956) was a Hungarian painter influenced by Der Blaue Reiter, Cubism, Futurism, Neo-Primitivism, Constructivism, and Metaphysical painting.Béla Kádár (1877–1956) was a Hungarian painter influenced by Der Blaue Reiter, Cubism, Futurism, Neo-Primitivism, Constructivism, and Metaphysical painting.Béla Kádár (1877–1956) was a Hungarian painter influenced by Der Blaue Reiter, Cubism, Futurism, Neo-Primitivism, Constructivism, and Metaphysical painting.',
-					
-				},
-				{
-					name: 'Exhibition of works by Alice Bailly',
-					typeOnline: false,
-					date: '17 Feb 2022 - 17 May 2022',
-					shortDescription: 'Alice Bailly (25 February 1872 – 1 January 1938) was a Swiss avant-garde painter.',
-					fullDescription: '',
-				}
-			]
-
 			return {
-				ExhibitionsList,
 				onEnter,
 				onBeforeEnter,
 			}
@@ -318,7 +235,6 @@
 	.fade-title-enter-from, .fade-subtitle-enter-from, .fade-btnWelcome-enter-from {
 		transform: translateY(100px);
 		opacity: 0;
-		
 	}
 	
 	.fade-title-enter-to, .fade-subtitle-enter-to,  .fade-btnWelcome-enter-to{
@@ -347,16 +263,18 @@
 	}
 	.fade-leftImg-enter-active {
 		transition: all 1s ease;
-		
 	}
 
 	//right
 	.fade-rightImg-enter-from {
 		opacity: 0;
 	}
-	.fade-rightImg-enter-to {
-	}
-	.fade-rightImg-enter-active {
-		// transition: all 1s ease 0.5s;
-	}
+
+	//animation block about
+	.fade-paragraph {
+		transition: 0.5s all ease-out 0.2s;
+		opacity: 0;
+		transform: translateX(-50%);
+	}			
+	
 </style>

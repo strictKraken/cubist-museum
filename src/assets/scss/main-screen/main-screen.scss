@@ -118,7 +118,9 @@
 	background-color: $Black;
 
 	padding: 128px 0 149px 0;
-
+	&__box {
+		overflow: hidden;
+	}
 	&__container {
 		display: flex;
 		justify-content: space-between;
@@ -224,151 +226,149 @@
 	}
 }
 
+// .exhibitions {
+// 	padding: 128px 0 64px 0;
+
+// 	@media (max-width: 860px) {
+// 		padding: 64px 0;
+// 	}
+
+// 	&__title {
+// 		font-family: $Zilla;
+// 		font-weight: 400;
+// 		font-size: 58px;
+// 		line-height: calc(70 / 58 * 100%);
+// 		color: $DarkWhite;
+
+// 		margin-bottom: 66px;
+
+// 		@media (max-width: 860px) {
+// 			font-size: 26px;
+// 			margin-bottom: 39px;
+// 		}
+// 	}
+
+// 	&__content {
+// 		margin-bottom: 128px;
+
+// 		display: grid;
+// 		grid-template-columns: minmax(156px, 634px) minmax(155px, 453px);
+// 		grid-template-rows: repeat(8, 195px);
+
+// 		grid-template-areas: "cart1 cart2"
+// 			"cart1 cart2"
+// 			"cart1 cart3"
+// 			"cart4 cart3"
+// 			"cart4 btn"
+// 			"cart4 btn"
+// 			"cart5 cart5"
+// 			"cart5 cart5";
+// 		row-gap: 23px;
+// 		column-gap: 23px;
+
+// 		@media (max-width: 860px) {
+
+// 			grid-template-rows: repeat(8, 78px);
+// 			row-gap: 16px;
+// 			column-gap: 16px;
+// 			margin-bottom: 0;
+// 		}
+// 	}
+
+// 	.cart1 {
+// 		grid-area: cart1;
+// 	}
+
+// 	.cart2 {
+// 		grid-area: cart2;
+// 	}
+
+// 	.cart3 {
+// 		grid-area: cart3;
+// 	}
+
+// 	.cart4 {
+// 		grid-area: cart4;
+// 	}
+
+// 	.cart5 {
+// 		grid-area: cart5;
+// 	}
+
+// 	&__cart {}
+
+// 	&__cart-more {
+// 		grid-area: btn;
+// 	}
+
+// 	&__btn-to-top {
+// 		@media (max-width: 860px) {
+// 			display: none;
+// 		}
+// 	}
 
 
-.exhibitions {
-	padding: 128px 0 64px 0;
-
-	@media (max-width: 860px) {
-		padding: 64px 0;
-	}
-
-	&__title {
-		font-family: $Zilla;
-		font-weight: 400;
-		font-size: 58px;
-		line-height: calc(70 / 58 * 100%);
-		color: $DarkWhite;
-
-		margin-bottom: 66px;
-
-		@media (max-width: 860px) {
-			font-size: 26px;
-			margin-bottom: 39px;
-		}
-	}
-
-	&__content {
-		margin-bottom: 128px;
-
-		display: grid;
-		grid-template-columns: minmax(156px, 634px) minmax(155px, 453px);
-		grid-template-rows: repeat(8, 195px);
-
-		grid-template-areas: "cart1 cart2"
-			"cart1 cart2"
-			"cart1 cart3"
-			"cart4 cart3"
-			"cart4 btn"
-			"cart4 btn"
-			"cart5 cart5"
-			"cart5 cart5";
-		row-gap: 23px;
-		column-gap: 23px;
-
-		@media (max-width: 860px) {
-
-			grid-template-rows: repeat(8, 78px);
-			row-gap: 16px;
-			column-gap: 16px;
-			margin-bottom: 0;
-		}
-	}
-
-	.cart1 {
-		grid-area: cart1;
-	}
-
-	.cart2 {
-		grid-area: cart2;
-	}
-
-	.cart3 {
-		grid-area: cart3;
-	}
-
-	.cart4 {
-		grid-area: cart4;
-	}
-
-	.cart5 {
-		grid-area: cart5;
-	}
-
-	&__cart {}
-
-	&__cart-more {
-		grid-area: btn;
-	}
-
-	&__btn-to-top {
-		@media (max-width: 860px) {
-			display: none;
-		}
-	}
-
-
-}
+// }
 
 
 
-.cart-more {
-	background-color: #D8DFDE;
-	cursor: pointer;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
+// .cart-more {
+// 	background-color: #D8DFDE;
+// 	cursor: pointer;
+// 	display: flex;
+// 	flex-direction: column;
+// 	justify-content: center;
+// 	align-items: center;
 
 
-	@media (max-width: 860px) {
-		background-color: transparent;
-	}
+// 	@media (max-width: 860px) {
+// 		background-color: transparent;
+// 	}
 
-	&__text {
-		margin-bottom: 42px;
-		color: $DarkGreen;
-		font-size: 20px;
-		line-height: calc(21 / 20 * 100%);
+// 	&__text {
+// 		margin-bottom: 42px;
+// 		color: $DarkGreen;
+// 		font-size: 20px;
+// 		line-height: calc(21 / 20 * 100%);
 
-		@media (max-width: 860px) {
-			font-size: 12px;
-			margin-bottom: 11px;
-		}
-	}
+// 		@media (max-width: 860px) {
+// 			font-size: 12px;
+// 			margin-bottom: 11px;
+// 		}
+// 	}
 
-	&__link {
-		svg {
-			width: 128px;
-			height: 128px;
+// 	&__link {
+// 		svg {
+// 			width: 128px;
+// 			height: 128px;
 
-			path {
-				fill: $DarkGreen;
-			}
-		}
+// 			path {
+// 				fill: $DarkGreen;
+// 			}
+// 		}
 
-		@media (max-width: 860px) {
-			svg {
-				width: 59px;
-				height: 60px;
-			}
-		}
-	}
+// 		@media (max-width: 860px) {
+// 			svg {
+// 				width: 59px;
+// 				height: 60px;
+// 			}
+// 		}
+// 	}
 
-	&:hover {
+// 	&:hover {
 
-		.cart-more__link {
-			svg {
-				path {
-					fill: $LightGreen;
-				}
-			}
-		}
+// 		.cart-more__link {
+// 			svg {
+// 				path {
+// 					fill: $LightGreen;
+// 				}
+// 			}
+// 		}
 
-		.cart-more__text {
-			color: $LightGreen;
-		}
-	}
+// 		.cart-more__text {
+// 			color: $LightGreen;
+// 		}
+// 	}
 
 
-}
+// }

@@ -9,7 +9,7 @@
 			</div>
 		</section>
 
-		<calendar-carusel/>
+		<!-- <calendar-carusel/> -->
 
 		<div class="exhibitions-carts">
 			<div class="exhibitions-cart__container container">
@@ -29,124 +29,14 @@
 				</div>
 
 				<div class="exhibitions-carts__content">
-					<div class="exhibitions-carts__items mix online">
-						<exhibition-cart-item class="cart-1">
+					<!-- <div class="exhibitions-carts__items mix online">
+						<exhibition-cart-item class="cart-1" :Exhibition="ExhibitionsList[0]">
 							<template v-slot:image>
 								<img class="cart-exhibitions__bg " src="@/img/Content/exhibitions/1.jpg" alt="bg">
 							</template>
-							<template v-slot:online>
-								Online
-							</template>
-							<template v-slot:title>
-									Exhibition of works by Bela Kadar
-							</template>
-							
-							<template v-slot:date>
-								15 Feb 2022 - 15 Jul 2023
-							</template>
-							<template v-slot:about>
-								Béla Kádár (1877–1956) was a Hungarian painter influenced by Der Blaue Reiter, Cubism, Futurism,
-								Neo-Primitivism, Constructivism, and Metaphysical painting.
-							</template>
-						</exhibition-cart-item>
-						<exhibition-cart-item class="cart-2">
-							<template v-slot:image>
-								<img class="cart-exhibitions__bg " src="@/img/Content/exhibitions/1.jpg" alt="bg">
-							</template>
-							<template v-slot:online>
-								Online
-							</template>
-							<template v-slot:title>
-									Exhibition of works by Bela Kadar
-							</template>
-							
-							<template v-slot:date>
-								15 Feb 2022 - 15 Jul 2023
-							</template>
-							<template v-slot:about>
-								Béla Kádár (1877–1956) was a Hungarian painter influenced by Der Blaue Reiter, Cubism, Futurism,
-								Neo-Primitivism, Constructivism, and Metaphysical painting.
-							</template>
-						</exhibition-cart-item>
-						<exhibition-cart-item class="cart-3">
-							<template v-slot:image>
-								<img class="cart-exhibitions__bg " src="@/img/Content/exhibitions/1.jpg" alt="bg">
-							</template>
-							<template v-slot:online>
-								Online
-							</template>
-							<template v-slot:title>
-									Exhibition of works by Bela Kadar
-							</template>
-							
-							<template v-slot:date>
-								15 Feb 2022 - 15 Jul 2023
-							</template>
-							<template v-slot:about>
-								Béla Kádár (1877–1956) was a Hungarian painter influenced by Der Blaue Reiter, Cubism, Futurism,
-								Neo-Primitivism, Constructivism, and Metaphysical painting.
-							</template>
-						</exhibition-cart-item>
-						<exhibition-cart-item class="cart-4">
-							<template v-slot:image>
-								<img class="cart-exhibitions__bg " src="@/img/Content/exhibitions/1.jpg" alt="bg">
-							</template>
-							<template v-slot:online>
-								Online
-							</template>
-							<template v-slot:title>
-									Exhibition of works by Bela Kadar
-							</template>
-							
-							<template v-slot:date>
-								15 Feb 2022 - 15 Jul 2023
-							</template>
-							<template v-slot:about>
-								Béla Kádár (1877–1956) was a Hungarian painter influenced by Der Blaue Reiter, Cubism, Futurism,
-								Neo-Primitivism, Constructivism, and Metaphysical painting.
-							</template>
-						</exhibition-cart-item>
-						<exhibition-cart-item class="cart-5">
-							<template v-slot:image>
-								<img class="cart-exhibitions__bg " src="@/img/Content/exhibitions/1.jpg" alt="bg">
-							</template>
-							<template v-slot:online>
-								Online
-							</template>
-							<template v-slot:title>
-									Exhibition of works by Bela Kadar
-							</template>
-							
-							<template v-slot:date>
-								15 Feb 2022 - 15 Jul 2023
-							</template>
-							<template v-slot:about>
-								Béla Kádár (1877–1956) was a Hungarian painter influenced by Der Blaue Reiter, Cubism, Futurism,
-								Neo-Primitivism, Constructivism, and Metaphysical painting.
-							</template>
-						</exhibition-cart-item>
-						<exhibition-cart-item class="cart-6">
-							<template v-slot:image>
-								<img class="cart-exhibitions__bg " src="@/img/Content/exhibitions/1.jpg" alt="bg">
-							</template>
-							<template v-slot:online>
-								Online
-							</template>
-							<template v-slot:title>
-									Exhibition of works by Bela Kadar
-							</template>
-							
-							<template v-slot:date>
-								15 Feb 2022 - 15 Jul 2023
-							</template>
-							<template v-slot:about>
-								Béla Kádár (1877–1956) was a Hungarian painter influenced by Der Blaue Reiter, Cubism, Futurism,
-								Neo-Primitivism, Constructivism, and Metaphysical painting.
-							</template>
-						</exhibition-cart-item>
-						
-					</div>
-					<div class="exhibitions-carts__items mix offline">
+						</exhibition-cart-item>						
+					</div> -->
+					<!-- <div class="exhibitions-carts__items mix offline">
 						<div class="cart-1 cart-exhibitions _ibg">
 							<img class="cart-exhibitions__bg " src="@/img/Content/exhibitions/1.jpg" alt="">
 							<div class="cart-exhibitions__info">
@@ -273,7 +163,7 @@
 								</p>
 							</div>
 						</div>
-					</div>
+					</div> -->
 				</div>
 			</div>
 		</div>
@@ -284,14 +174,20 @@
 
 <script>
 import ButtonToTop from '@/components/ButtonToTop.vue';
-import ExhibitionCartItem from '@/components/ExhibitionCartItem.vue';
-import CalendarCarusel from '@/components/ExhibitionsCalendarCarusel.vue';
+// import ExhibitionCartItem from '@/components/ExhibitionCartItem.vue';
+// import CalendarCarusel from '@/components/ExhibitionsCalendarCarusel.vue';
 export default {
 	name: 'PageExhibitions',
 	components: {
 		ButtonToTop,
-		ExhibitionCartItem,
-		CalendarCarusel,
+		// ExhibitionCartItem,
+		// CalendarCarusel,
+	},
+	props: {
+		ExhibitionsList: {
+			type: Array,
+			require: true,
+		}
 	},
 	setup() {
 		

@@ -1,29 +1,31 @@
 .cart-exhibitions {
-	height: 100%;
 	cursor: pointer;
 
 	position: relative;
-	transition: all 0.5s ease;
 
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-end;
-	&__flex {
-		flex: 1;
-		transition: flex 0.5s ease;
-	}
+
+	overflow: hidden;
+
 	&__info {
 		flex: 0;
-		max-height: fit-content;
 		padding: 16px;
 		background: rgba(21, 26, 19, 0.61);
 		color: $DarkWhite;
 		margin: 0 24px 24px 24px;
 		transition: all 0.5s ease;
+		
+		height: 100%;
+		
 		@media (max-width: (860 + 'px')) {
 			padding: 4px;
 			margin: 0;
+			width: 100%;
+			
 		}
+		top: 50%;
 	}
 
 	&__online {
@@ -62,25 +64,42 @@
 
 	&__about {
 		font-size: 16px;
+		// width: 100%;
 		line-height: calc(17 / 16 * 100%);
-
 		@media (max-width: (860 + 'px')) {
 			display: none;
 		}
-	}
-
-	&:hover {
 		
-		.cart-exhibitions {
+		span {
+			overflow: hidden;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+			display: inline-block;
 			
+			height: inherit;
+			max-height: calc(100% - 10%);
+			display: -webkit-box;
+			-webkit-line-clamp: 20;
+			-webkit-box-orient: vertical;  
 		}
-		
+	}
+	
+	&:hover {
+		.cart-exhibitions__flex {
+			flex: 0;
+		}
 		.cart-exhibitions__info {
+			position: absolute;
+			top: 0;
+			
 			flex: 1;
 			margin: 0;
 			padding: 16px 40px 40px 40px;
-			
-		}
+			width: 100%;
+			span {
+				white-space: normal;
+			}
+		}	
 	}
 
 	@media (max-width: 860px) {
