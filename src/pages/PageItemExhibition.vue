@@ -1,43 +1,23 @@
 <template>
-	<div class="page-exhibition__about">
+	<div class="">
+		<div class="page-exhibition__main">
+			<img class="page-exhibition__main-bg" alt="" src="@/img/Content/exhibitions/1-big.jpg">
+		</div>
+		<div class="page-exhibition__about">
 		<div class="page-exhibition__сontainer container">
 			<section class="page-exhibition__descriptions">
 				<div class="online">
-					<span class="bg-red">Online</span>
+					<!-- <span v-if="ExhibitionData.typeOnline" class="bg-red">Online</span> -->
 				</div>
 				<h3 class="page-exhibition__title">
-					Exhibition of works by Bela Kadar
+					<!-- {{ Exhibition.name }} -->
 				</h3>
 				<div class="page-exhibition__date">
-					15 Feb 2022 - 15 Jul 2022
+					<!-- {{ ExhibitionData.date }} -->
 				</div>
 				<div class="page-exhibition__text">
 					<p>
-						Béla Kádár (1877-1956) is a Hungarian master, specialising in painting and drawing. Kadar
-						incorporated
-						themes of Hungarian folklore and peasant life into his art. His painting style reflected many of the
-						artistic movements of the early part of the 20th century including expressionism, constructivism and
-						cubo-futurism. Amongst his early interests was mural painting. Like many of the artists of his day
-						he
-						was drawn to Paris and Berlin, and by 1910 he had visited both cities twice.
-					</p>
-
-					<p>In 1923, Kadar showed his paintings in Berlin at the invitation of Herwath Walden. Walden was an
-						important figure in the German avant-garde, being the publisher of the journal Der Sturm which
-						featured
-						the works of Franz Marc, Paul Klee, Wassily Kandinsky, Marc Chagall and Oskar Kokoschka.</p>
-					<p>
-						During the group exhibition at Walden´s gallery with other artist´s of Der Sturm, Kadar met
-						Katherine
-						Dreier whose Societe Anonyme was instrumental in bringing the work of the European avant-garde to
-						New
-						York. With her help two major exhibitions of his work were planned for the Brooklyn Museum of Art,
-						the
-						second of which in September 1928 Kadar travelled from Europe to attend.
-						In 1923, Kadar showed his paintings in Berlin at the invitation of Herwath Walden. Walden was an
-						important figure in the German avant-garde, being the publisher of the journal Der Sturm which
-						featured
-						the works of Franz Marc, Paul Klee, Wassily Kandinsky, Marc Chagall and Oskar Kokoschka.
+						<!-- {{ ExhibitionData.fullDescription }} -->
 					</p>
 				</div>
 				<div class="page-exhibition__share">
@@ -89,7 +69,6 @@
 							<p class='date-enter'>Tuesday to Sunday</p>
 							<p class='time'>
 								10:00
-
 							</p>
 							<p>13:00
 							</p>
@@ -185,13 +164,26 @@
 			</button>
 		</div>
 	</div>
+	</div>
+	
 </template>
 
 <script>
+import { onMounted } from '@vue/runtime-core'
+// import router from '@/router'
+import {useRoute} from 'vue-router';
 export default {
 	name: 'PageItemExhibition',
+	props: {
+		Exhibition: {
+			type: Object,
+			require: true,
+		}
+	},
 	setup() {
-		
+		onMounted(()=> {
+			console.log(useRoute().params.Exhibition)
+		})
 	},
 }
 </script>

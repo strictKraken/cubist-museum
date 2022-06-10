@@ -1,5 +1,5 @@
 <template>
-	<router-link :to="{ path: '/exhibition/' + Exhibition.id}" class="exhibitions__cart cart-exhibitions _ibg fade-up" @mouseover="onHover">
+	<router-link :to="{ path: '/exhibitions/' + Exhibition.id , params: {Exhibition: Exhibition} }" class="exhibitions__cart cart-exhibitions _ibg fade-up" @mouseover="onHover" :Exhibition='Exhibition'>
 		<slot name='image'></slot>
 		<!-- <div class="cart-exhibitions__flex"></div> -->
 		<div class="cart-exhibitions__info">

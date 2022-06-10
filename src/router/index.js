@@ -18,6 +18,7 @@ const routes = [
 	{
 		path: '/exhibitions/:id',
 		component: PageItemExhibition,
+		props: true,
 	},
 	{
 		path: '/404',
