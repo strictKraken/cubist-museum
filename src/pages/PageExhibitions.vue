@@ -4,7 +4,9 @@
 			<div class="screen-exhibitions__main big-screen">
 				<img class="" src="@/img/Content/bg/1.jpg" alt="">
 				<div class="screen-exhibitions__title">
-					<h2 class="full-page-title">Exhibitions</h2>
+					<transition name="fade-up-title" appear>
+						<h2 class="full-page-title">Exhibitions</h2>
+					</transition>
 				</div>
 			</div>
 		</section>
@@ -194,3 +196,16 @@ export default {
 	},
 }
 </script>
+
+<style lang="scss">
+	.screen-exhibitions {
+		overflow-y: hidden;
+	}
+
+	.fade-up-title-enter-active {
+		transition: all 0.9s ease;
+	}
+	.fade-up-title-enter-from {
+		transform: translateY(100%);
+	}
+</style>

@@ -11,13 +11,16 @@
 				</div>
 				<h3 class="page-exhibition__title">
 					<!-- {{ Exhibition.name }} -->
+					Title
 				</h3>
 				<div class="page-exhibition__date">
 					<!-- {{ ExhibitionData.date }} -->
+					Date
 				</div>
 				<div class="page-exhibition__text">
 					<p>
 						<!-- {{ ExhibitionData.fullDescription }} -->
+						Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente esse vero praesentium doloribus libero dignissimos expedita doloremque amet voluptate optio at rerum iure asperiores harum accusamus illo, maiores maxime. Aspernatur!
 					</p>
 				</div>
 				<div class="page-exhibition__share">
@@ -94,7 +97,7 @@
 					</a>
 				</div>
 
-				<button class="aside-menu__button green-button">Reserve</button>
+				<router-link :to="{name: 'Reservation' }" class="aside-menu__button green-button">Reserve</router-link>
 			</aside>
 
 		</div>
@@ -153,27 +156,23 @@
 				</div>
 			</div>
 		</div>
-		<div class="page-exhibition__btn">
-			<button class="page-exhibition__btn-to-top btn-to-top">
-				<div class="btn-to-top__link" href="#">
-					<img class="img-svg" src="@/img/icons/arrow-top.svg" alt="btn-return">
-				</div>
-				<p class="btn-to-top__text">
-					Back to the top
-				</p>
-			</button>
-		</div>
+		<button-to-top class="page-exhibition__btn" />
 	</div>
 	</div>
-	
 </template>
 
 <script>
+import ButtonToTop from '@/components/ButtonToTop.vue';
+
 import { onMounted } from '@vue/runtime-core'
+
 // import router from '@/router'
 import {useRoute} from 'vue-router';
 export default {
 	name: 'PageItemExhibition',
+	components: {
+		ButtonToTop
+	},
 	props: {
 		Exhibition: {
 			type: Object,

@@ -3,6 +3,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import PageHome from '@/pages/PageHome.vue';
 import PageExhibitions from '@/pages/PageExhibitions.vue';
 import PageItemExhibition from '@/pages/PageItemExhibition.vue';
+import PageResrvation from '@/pages/PageReservation.vue';
 
 const routes = [
 	{
@@ -18,7 +19,13 @@ const routes = [
 	{
 		path: '/exhibitions/:id',
 		component: PageItemExhibition,
-		props: true,
+		// props: true,
+	},
+	{
+		path: '/exhibitions/:id/reservation',
+		name: 'Reservation',
+		component: PageResrvation,
+
 	},
 	{
 		path: '/404',
