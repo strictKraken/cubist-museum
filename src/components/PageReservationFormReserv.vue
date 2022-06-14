@@ -7,7 +7,7 @@
 
 			<div class="steps-line__step active-steps" :class="{ 'active-steps': currentStep >= 0 }">
 				<div class="steps-line__step-style">
-					<img class="img-svg" src="@/img/icons/rectangle-white.svg" alt="">
+					<icon-triangle/>
 					<div class="steps-line__number">
 						1
 					</div>
@@ -18,7 +18,7 @@
 			</div>
 			<div class="steps-line__step" :class="{ 'active-steps': (currentStep >= 1) }">
 				<div class="steps-line__step-style">
-					<img class="img-svg" src="@/img/icons/rectangle-white.svg" alt="">
+					<icon-triangle/>
 					<div class="steps-line__number">
 						2
 					</div>
@@ -29,7 +29,7 @@
 			</div>
 			<div class="steps-line__step" :class="{ 'active-steps': currentStep >= 2 }">
 				<div class="steps-line__step-style">
-					<img class="img-svg" src="@/img/icons/rectangle-white.svg" alt="">
+					<icon-triangle/>
 					<div class="steps-line__number">
 						3
 					</div>
@@ -53,61 +53,17 @@
 				</span>
 			</h6>
 			<div class="form-reservation__date-pick">
-
-				<label class="radio-btn-rectangle__lable">
-					<input class="radio-btn-rectangle__input" type="radio" name="date-pick">
+				<label @click="choiceDate.value = true" v-for="item in data.dateExhibition" :key="item.id" class="radio-btn-rectangle__lable">
+					<input class="radio-btn-rectangle__input" type="radio" name="date-pick" v-model="choiceDate" >
 					<div class="radio-btn-rectangle__day">
-						Today
+						{{ item.index }}
 					</div>
 					<div class="radio-btn-rectangle__time">
-						17.02.2022
+						{{ item }}
 					</div>
 					<div class="radio-btn-rectangle__border"></div>
-				</label>
 
-				<label class="radio-btn-rectangle__lable">
-					<input class="radio-btn-rectangle__input" type="radio" name="date-pick">
-					<div class="radio-btn-rectangle__day">
-						Today
-					</div>
-					<div class="radio-btn-rectangle__time">
-						17.02.2022
-					</div>
-					<div class="radio-btn-rectangle__border"></div>
 				</label>
-
-				<label class="radio-btn-rectangle__lable">
-					<input class="radio-btn-rectangle__input" type="radio" name="date-pick">
-					<div class="radio-btn-rectangle__day">
-						Today
-					</div>
-					<div class="radio-btn-rectangle__time">
-						17.02.2022
-					</div>
-					<div class="radio-btn-rectangle__border"></div>
-				</label>
-				<label class="radio-btn-rectangle__lable">
-					<input class="radio-btn-rectangle__input" type="radio" name="date-pick">
-					<div class="radio-btn-rectangle__day">
-						Today
-					</div>
-					<div class="radio-btn-rectangle__time">
-						17.02.2022
-					</div>
-					<div class="radio-btn-rectangle__border"></div>
-				</label>
-
-				<label class="radio-btn-rectangle__lable">
-					<input class="radio-btn-rectangle__input" type="radio" name="date-pick">
-					<div class="radio-btn-rectangle__day">
-						Today
-					</div>
-					<div class="radio-btn-rectangle__time">
-						17.02.2022
-					</div>
-					<div class="radio-btn-rectangle__border"></div>
-				</label>
-
 
 			</div>
 			<div class="form-reservation__ticket-block">
@@ -119,27 +75,14 @@
 					</span>
 				</h6>
 				<div class="form-reservation__time-pick">
-					<label class="radio-btn-rectangle__lable">
-						<input class="radio-btn-rectangle__input" type="radio" name="time-pick">
+					<label v-for="item in data.timeExhibition" :key="item.index" class="radio-btn-rectangle__lable">
+						<input class="radio-btn-rectangle__input" type="radio" name="time-pick" v-model="choiceTime">
 						<div class="radio-btn-rectangle__time">
-							10:00
+							{{ item }}
 						</div>
 						<div class="radio-btn-rectangle__border"></div>
 					</label>
-					<label class="radio-btn-rectangle__lable">
-						<input class="radio-btn-rectangle__input" type="radio" name="time-pick">
-						<div class="radio-btn-rectangle__time">
-							13:00
-						</div>
-						<div class="radio-btn-rectangle__border"></div>
-					</label>
-					<label class="radio-btn-rectangle__lable">
-						<input class="radio-btn-rectangle__input" type="radio" name="time-pick">
-						<div class="radio-btn-rectangle__time">
-							16:00
-						</div>
-						<div class="radio-btn-rectangle__border"></div>
-					</label>
+					
 				</div>
 				<h6 class="form-reservation__section-name">
 					Select tickets
@@ -148,100 +91,31 @@
 						Please select a ticket
 					</span>
 				</h6>
-				<div class="form-reservation__ticket-pick">
-					<div class="ticket-pick" id="btn-base">
-						<div class="ticket-pick__text">
-							Without lugot
-						</div>
-						<div class="ticket-pick__price">800 ₽</div>
-
-						<div class="ticket-pick__count">
-							<button class="ticket-pick__btn-left" btn-left>
-								-
-							</button>
-							<label class="ticket-pick__number">
-								<input class="ticket-pick__number-input" name="count-tickets-base"
-									type="number" value="0" min="0" max="99" ticket-count>
-								<p>0</p>
-							</label>
-							<button class="ticket-pick__btn-right" btn-right>
-								+
-							</button>
-						</div>
-					</div>
-				</div>
-
-				<div class="form-reservation__ticket-pick ">
-					<div class="ticket-pick" id="btn-retirees">
-						<div class="ticket-pick__text">
-							Retirees
-						</div>
-						<div class="ticket-pick__price">free</div>
-
-						<div class="ticket-pick__count">
-							<button class="ticket-pick__btn-left" id='btn-left'>
-								-
-							</button>
-							<label class="ticket-pick__number">
-								<input class="ticket-pick__number-input" name="count-tickets-retiress"
-									type="number" value="0" min="0" max="99" ticket-count>
-								<p>0</p>
-							</label>
-							<button class="ticket-pick__btn-right" id="btn-right">
-								+
-							</button>
-						</div>
-					</div>
-					<div class="form-reservation__upload-file upload-file">
-						<input class="upload-file__input" type="file" name="" id="file-input1"
-							accept=".jpg, jpeg, .png, .pdf">
-						<label class="upload-file__label" for="file-input1">
-							<img class="img-svg upload-file__logo" src="@/img/icons/inputFile.svg"
-								alt="upload-file">
-							<div class="upload-file__content">
-								<span class="upload-file__text">Please confirm your status</span>
-								<span class="upload-file__info-text">Attach your selfies with the
-									documents</span>
-							</div>
-						</label>
-					</div>
-				</div>
-
-				<div class="form-reservation__ticket-pick">
-					<div class="ticket-pick" id="btn-student">
-						<div class="ticket-pick__text">
-							Students
-						</div>
-						<div class="ticket-pick__price">400 ₽</div>
-
-						<div class="ticket-pick__count">
-							<button class="ticket-pick__btn-left" id='btn-left'>
-								-
-							</button>
-							<label class="ticket-pick__number">
-								<input class="ticket-pick__number-input" name="count-tickets-student"
-									type="number" value="0" min="0" max="99" ticket-count>
-								<p>0</p>
-							</label>
-							<button class="ticket-pick__btn-right" id="btn-right">
-								+
-							</button>
-						</div>
-					</div>
-					<div class="form-reservation__upload-file upload-file">
-						<input class="upload-file__input" type="file" name="" id="file-input2"
-							accept=".jpg, jpeg, .png, .pdf">
-						<label class="upload-file__label" for="file-input2">
-							<img class="img-svg upload-file__logo" src="@/img/icons/inputFile.svg"
-								alt="upload-file">
-							<div class="upload-file__content">
-								<span class="upload-file__text">Please confirm your status</span>
-								<span class="upload-file__info-text">Attach your selfies with the
-									documents</span>
-							</div>
-						</label>
-					</div>
-				</div>
+				
+				<select-tickets>
+					<template v-slot:text>
+						Without lugot	
+					</template>
+					<template v-slot:price>
+						800 ₽
+					</template>
+				</select-tickets>
+				<select-tickets>
+					<template v-slot:text>
+						Retirees	
+					</template>
+					<template v-slot:price>
+						free
+					</template>
+				</select-tickets>
+				<select-tickets>
+					<template v-slot:text>
+						Students	
+					</template>
+					<template v-slot:price>
+						400 ₽
+					</template>
+				</select-tickets>
 			</div>
 		</div>
 
@@ -253,7 +127,7 @@
 				Please state your Name
 			</p>
 			<input class="form-reservation__input" type="text" placeholder="What is your name?"
-				maxlength="55" name="name-input" value="">
+				maxlength="55" name="name-input" v-model='name'>
 
 			<h6 class="form-reservation__section-name">
 				Phone number
@@ -261,7 +135,7 @@
 			<p class="form-reservation__errore-input-text">
 				Please state your phone number
 			</p>
-			<input class="form-reservation__input" type="tel" placeholder="+7(___)-___-__-__" name="data-tel-input" data-tel-input>
+			<input class="form-reservation__input" type="tel" placeholder="+7(___)-___-__-__" name="data-tel-input" data-tel-input v-model='phone'>
 			<h6 class="form-reservation__section-name">
 				Choose to receive a tour invitation links
 				<div class="form-reservation__help" id="help">
@@ -400,33 +274,76 @@
 </template>
 
 <script>
-import $ from "jquery";
 import {ref} from 'vue';
+
+import IconTriangle from "./icons/IconTriangle.vue";
+import SelectTickets from './PageReservationSelectTickets.vue';
 
 export default {
 	name: 'FormReseve',
+	components: {
+		IconTriangle,
+		SelectTickets,
+	},
 	setup() {
-		let currentStep = ref(0);
+		const data = {
+			dateExhibition: {
+				1: '17.02.2022',
+				2: '18.02.2022',
+				3: '19.02.2022',
+				4: '20.02.2022',
+			},
+			timeExhibition: {
+				1: '10:00',
+				2: '13:00',
+				3: '16:00',
+			}
+		}
 		
-		const $stepNumbes = $('.steps-line__step');
+		let currentStep = ref(0);
+		const firstStep = 0;
+		const lastStep = 2;
+		//data for sent
+		let choiceDate = ref(false);
+		let choiceTime = ref(false);
+		let name = ref('');
+		let phone = ref('');
+		
 		const btnPrev = () => {
-			$($stepNumbes[currentStep]).removeClass('active-steps');
-			currentStep.value--;
-			//
-			updateFrom()
+			if(currentStep.value > firstStep) {
+				currentStep.value--;
+			}
 		}
 		const btnNext = () => {
-			currentStep.value++;
+			if(currentStep.value < lastStep && validation()) {
+				currentStep.value++;
+			}
 		}
-		
-		const updateFrom = () => {
-			
+
+		const validation = () => {
+			if(currentStep.value === 0) { 
+				let errors = [];
+				if(!choiceDate.value) {
+					errors.push('Choice the date please');
+				}
+				if(!choiceTime.value) {
+					errors.push('Choice the time please');
+				}
+				if(!errors.length) {
+					return true;
+				}
+			}
 		}
 
 		return {
 			currentStep,
 			btnNext,
 			btnPrev,
+			choiceDate,
+			choiceTime,
+			data,
+			name,
+			phone,
 		}
 	},
 

@@ -19,7 +19,7 @@ const routes = [
 	{
 		path: '/exhibitions/:id',
 		component: PageItemExhibition,
-		// props: true,
+		props: true,
 	},
 	{
 		path: '/exhibitions/:id/reservation',

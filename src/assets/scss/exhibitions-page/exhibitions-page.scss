@@ -62,43 +62,36 @@
 		display: grid;
 
 		grid-template-columns: minmax(156px, 453px) minmax(155px, 634px);
-		grid-template-rows: repeat(8, 196px);
-
-		grid-template-areas: "cart1 cart2"
-			"cart1 cart2"
-			"cart3 cart2"
-			"cart3 cart5"
-			"cart4 cart5"
-			"cart4 cart5"
-			"cart6 cart6"
-			"cart6 cart6";
+		grid-auto-rows: minmax(196px,196px);
+		
 		row-gap: 23px;
 		column-gap: 23px;
 		margin-bottom: 23px;
 	}
 
 	.cart-1 {
-		grid-area: cart1;
+		 grid-row: auto / span 2;
 	}
 
 	.cart-2 {
-		grid-area: cart2;
+		grid-row: auto / span 3;
 	}
 
 	.cart-3 {
-		grid-area: cart3;
+		grid-row: auto / span 2;
+		grid-column: auto / span 2;
 	}
 
 	.cart-4 {
-		grid-area: cart4;
+		// grid-area: cart4;
 	}
 
 	.cart-5 {
-		grid-area: cart5;
+		// grid-area: cart5;
 	}
 
 	.cart-6 {
-		grid-area: cart6;
+		// grid-area: cart6;
 	}
 }
 

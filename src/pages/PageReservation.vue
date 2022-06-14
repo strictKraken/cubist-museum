@@ -12,8 +12,50 @@
 			<div class="reservation__content">
 				<form-reseve/>
 				<aside-menu/>
-				
-				
+				<div class="reservation__price-total  price-reservation">
+			<h6 class="price-reservation__title">
+				Total:
+			</h6>
+			<!--- ??????????????? -->
+			<div class="price-reservation__items">
+				<div class="price-reservation__item" id="ticket-base">
+					<div class="price-reservation__name">
+						Without lugot
+					</div>
+					<div class="price-reservation__price">
+
+					</div>
+					<div class="price-reservation__count">
+
+					</div>
+				</div>
+				<div class="price-reservation__item" id="ticket-retirees">
+					<div class="price-reservation__name">
+						Retirees
+					</div>
+					<div class="price-reservation__price">
+
+					</div>
+					<div class="price-reservation__count">
+
+					</div>
+				</div>
+				<div class="price-reservation__item" id="ticket-student">
+					<div class="price-reservation__name">
+						Students
+					</div>
+					<div class="price-reservation__price">
+
+					</div>
+					<div class="price-reservation__count">
+
+					</div>
+				</div>
+			</div>
+			<div class="price-reservation__total">
+				0 ₽
+			</div>
+		</div>
 			</div>
 		</div>
 	</div>

@@ -2,6 +2,7 @@
 .page-exhibition {
 
 	&__main {
+		min-height: fit-content;
 		max-height: 792px;
 		overflow: hidden;
 		img {

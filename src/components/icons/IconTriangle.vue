@@ -1,0 +1,14 @@
+<template>
+    <svg width="84" height="72" viewBox="0 0 84 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M82.6294 1.25001L42.0003 71.0065L1.37118 1.25L82.6294 1.25001Z" fill="white" stroke="#007C67"/>
+    </svg>
+</template>
+
+<script>
+export default {
+    name: 'IconTriangle',
+    setup() {
+        
+    },
+}
+</script>

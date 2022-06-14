@@ -1,5 +1,5 @@
 <template>
-	<router-link :to="{ path: '/exhibitions/' + Exhibition.id , params: {Exhibition: Exhibition} }" class="exhibitions__cart cart-exhibitions _ibg fade-up" @mouseover="onHover" :Exhibition='Exhibition'>
+	<router-link :to="{ path: '/exhibitions/' + Exhibition.id  }" class="exhibitions__cart cart-exhibitions _ibg fade-up" @mouseover="onHover" :Exhibition='Exhibition'>
 		<slot name='image'></slot>
 		<!-- <div class="cart-exhibitions__flex"></div> -->
 		<div class="cart-exhibitions__info">
@@ -16,7 +16,7 @@
 					{{ Exhibition.date }}
 				</p>
 			</div>
-			<transition name='fade-full-text'>
+			<transition name='fade-full-text' appear>
 				<p v-if='shortAbout' class="cart-exhibitions__about">
 					<span>{{ Exhibition.shortDescription }}</span>
 				</p>
@@ -45,6 +45,7 @@ export default {
 		onMounted(()=> {
 			ibg();
 			$fadeUpElements = $('.fade-up');
+			handleScroll();
 			$(window).on('scroll', handleScroll);
 		});
 		onUnmounted(() => {

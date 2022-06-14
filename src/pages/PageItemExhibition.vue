@@ -107,50 +107,15 @@
 					<span class="bg-green">Reviews</span>
 				</div>
 				<div class="page-exhibition__content reviews">
-					<div class="reviews__item">
+					<div v-for="item in data" :key="item.index"  class="reviews__item">
 						<div class="reviews__icons">
-							<img class="img-svg" src="@/img/icons/star.svg" alt="">
-							<img class="img-svg" src="@/img/icons/star.svg" alt="">
-							<img class="img-svg" src="@/img/icons/star.svg" alt="">
-							<img class="img-svg" src="@/img/icons/star.svg" alt="">
-							<img class="img-svg" src="@/img/icons/star.svg" alt="">
+							<img v-for="item_x in item.rating" :key="item_x.index" class="img-svg" src="@/img/icons/star.svg" alt="">
 						</div>
 						<div class="reviews__text">
-							The exhibition is really interesting. I advise you to go and enjoy the art.
+							{{ item.text }}
 						</div>
 						<div class="reviews__author">
-							- Masha E.
-						</div>
-					</div>
-					<div class="reviews__item">
-						<div class="reviews__icons">
-							<img class="img-svg" src="@/img/icons/star.svg" alt="">
-							<img class="img-svg" src="@/img/icons/star.svg" alt="">
-							<img class="img-svg" src="@/img/icons/star.svg" alt="">
-							<img class="img-svg" src="@/img/icons/star.svg" alt="">
-							<img class="img-svg" src="@/img/icons/star.svg" alt="">
-						</div>
-						<div class="reviews__text">
-							I loved it. I like cubism in general. Cool tour, will be visiting more exhibitions online.
-						</div>
-						<div class="reviews__author">
-							- Anna Y.
-						</div>
-					</div>
-					<div class="reviews__item">
-						<div class="reviews__icons">
-							<img class="img-svg" src="@/img/icons/star.svg" alt="">
-							<img class="img-svg" src="@/img/icons/star.svg" alt="">
-							<img class="img-svg" src="@/img/icons/star.svg" alt="">
-							<img class="img-svg" src="@/img/icons/star.svg" alt="">
-							<img class="img-svg" src="@/img/icons/star.svg" alt="">
-
-						</div>
-						<div class="reviews__text">
-							The best thing they came up with was online exhibitions. Especially during mass quarantine.
-						</div>
-						<div class="reviews__author">
-							- Nikita B.
+							- {{ item.name }}
 						</div>
 					</div>
 				</div>
@@ -166,8 +131,6 @@ import ButtonToTop from '@/components/ButtonToTop.vue';
 
 import { onMounted } from '@vue/runtime-core'
 
-// import router from '@/router'
-import {useRoute} from 'vue-router';
 export default {
 	name: 'PageItemExhibition',
 	components: {
@@ -180,9 +143,30 @@ export default {
 		}
 	},
 	setup() {
+		const data = [
+			{
+				name: 'Masha E.',
+				text: 'The exhibition is really interesting. I advise you to go and enjoy the art.',
+				rating: 5,
+			},
+			{
+				name: 'Anna Y.',
+				text: 'I loved it. I like cubism in general. Cool tour, will be visiting more exhibitions online.',
+				rating: 5,
+			},
+			{
+				name: 'Nikita B.',
+				text: 'The best thing they came up with was online exhibitions. Especially during mass quarantine.',
+				rating: 5,
+			}
+		];
+		
 		onMounted(()=> {
-			console.log(useRoute().params.Exhibition)
 		})
+
+		return {
+			data,
+		}
 	},
 }
 </script>

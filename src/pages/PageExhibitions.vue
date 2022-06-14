@@ -16,9 +16,9 @@
 		<div class="exhibitions-carts">
 			<div class="exhibitions-cart__container container">
 				<div class="exhibitions-carts__buttons">
-					<button class="exhibitions-carts__btn" data-filter="all">All exhibitions</button>
-					<button class="exhibitions-carts__btn" data-filter=".online">Online</button>
-					<button class="exhibitions-carts__btn" data-filter=".offline">Offline</button>
+					<button @click="filter='all'" class="exhibitions-carts__btn" data-filter="all">All exhibitions</button>
+					<button @click="filter='online'" class="exhibitions-carts__btn" data-filter=".online">Online</button>
+					<button @click="filter='offline'" class="exhibitions-carts__btn" data-filter=".offline">Offline</button>
 				</div>
 
 				<div class="exhibitions-carts__date">
@@ -31,141 +31,13 @@
 				</div>
 
 				<div class="exhibitions-carts__content">
-					<!-- <div class="exhibitions-carts__items mix online">
-						<exhibition-cart-item class="cart-1" :Exhibition="ExhibitionsList[0]">
+					<div class="exhibitions-carts__items mix online">
+						<exhibition-cart-item v-for="item in filteredItems" :key="item.id" :Exhibition="item" :class="getClass(item.id)">
 							<template v-slot:image>
 								<img class="cart-exhibitions__bg " src="@/img/Content/exhibitions/1.jpg" alt="bg">
 							</template>
-						</exhibition-cart-item>						
-					</div> -->
-					<!-- <div class="exhibitions-carts__items mix offline">
-						<div class="cart-1 cart-exhibitions _ibg">
-							<img class="cart-exhibitions__bg " src="@/img/Content/exhibitions/1.jpg" alt="">
-							<div class="cart-exhibitions__info">
-								<div class="cart-exhibitions__online">
-									<span class="bg-red">online</span>
-								</div>
-								<h4 class="cart-exhibitions__title">
-									Exhibition of works by Bela Kadar
-								</h4>
-								<div class="cart-exhibitions__date">
-									<p>
-										15 Feb 2022 - 15 Jul 2022
-									</p>
-								</div>
-								<p class="cart-exhibitions__about">
-									Béla Kádár (1877–1956) was a Hungarian painter influenced by Der Blaue Reiter, Cubism,
-									Futurism,
-									Neo-Primitivism, Constructivism, and Metaphysical painting.
-								</p>
-							</div>
-						</div>
-						<div class="cart-2 cart-exhibitions _ibg">
-							<img class="cart-exhibitions__bg " src="@/img/Content/exhibitions/1.jpg" alt="">
-							<div class="cart-exhibitions__info">
-								<div class="cart-exhibitions__online">
-									<span class="bg-red">online</span>
-								</div>
-								<h4 class="cart-exhibitions__title">
-									Exhibition of works by Bela Kadar
-								</h4>
-								<div class="cart-exhibitions__date">
-									<p>
-										15 Feb 2022 - 15 Jul 2022
-									</p>
-								</div>
-								<p class="cart-exhibitions__about">
-									Béla Kádár (1877–1956) was a Hungarian painter influenced by Der Blaue Reiter, Cubism,
-									Futurism,
-									Neo-Primitivism, Constructivism, and Metaphysical painting.
-								</p>
-							</div>
-						</div>
-						<div class="cart-3 cart-exhibitions _ibg">
-							<img class="cart-exhibitions__bg " src="@/img/Content/exhibitions/1.jpg" alt="">
-							<div class="cart-exhibitions__info">
-								<div class="cart-exhibitions__online">
-									<span class="bg-red">online</span>
-								</div>
-								<h4 class="cart-exhibitions__title">
-									Exhibition of works by Bela Kadar
-								</h4>
-								<div class="cart-exhibitions__date">
-									<p>
-										15 Feb 2022 - 15 Jul 2022
-									</p>
-								</div>
-								<p class="cart-exhibitions__about">
-									Béla Kádár (1877–1956) was a Hungarian painter influenced by Der Blaue Reiter, Cubism,
-									Futurism,
-									Neo-Primitivism, Constructivism, and Metaphysical painting.
-								</p>
-							</div>
-						</div>
-						<div class="cart-4 cart-exhibitions _ibg">
-							<img class="cart-exhibitions__bg " src="@/img/Content/exhibitions/1.jpg" alt="">
-							<div class="cart-exhibitions__info">
-								<div class="cart-exhibitions__online">
-									<span class="bg-red">online</span>
-								</div>
-								<h4 class="cart-exhibitions__title">
-									Exhibition of works by Bela Kadar
-								</h4>
-								<div class="cart-exhibitions__date">
-									<p>
-										15 Feb 2022 - 15 Jul 2022
-									</p>
-								</div>
-								<p class="cart-exhibitions__about">
-									Béla Kádár (1877–1956) was a Hungarian painter influenced by Der Blaue Reiter, Cubism,
-									Futurism,
-									Neo-Primitivism, Constructivism, and Metaphysical painting.
-								</p>
-							</div>
-						</div>
-						<div class="cart-5 cart-exhibitions _ibg">
-							<img class="cart-exhibitions__bg " src="@/img/Content/exhibitions/1.jpg" alt="">
-							<div class="cart-exhibitions__info">
-								<div class="cart-exhibitions__online">
-									<span class="bg-red">online</span>
-								</div>
-								<h4 class="cart-exhibitions__title">
-									Exhibition of works by Bela Kadar
-								</h4>
-								<div class="cart-exhibitions__date">
-									<p>
-										15 Feb 2022 - 15 Jul 2022
-									</p>
-								</div>
-								<p class="cart-exhibitions__about">
-									Béla Kádár (1877–1956) was a Hungarian painter influenced by Der Blaue Reiter, Cubism,
-									Futurism,
-									Neo-Primitivism, Constructivism, and Metaphysical painting.
-								</p>
-							</div>
-						</div>
-						<div class="cart-6 cart-exhibitions _ibg">
-							<img class="cart-exhibitions__bg " src="@/img/Content/exhibitions/1.jpg" alt="">
-							<div class="cart-exhibitions__info">
-								<div class="cart-exhibitions__online">
-									<span class="bg-red">online</span>
-								</div>
-								<h4 class="cart-exhibitions__title">
-									Exhibition of works by Bela Kadar
-								</h4>
-								<div class="cart-exhibitions__date">
-									<p>
-										15 Feb 2022 - 15 Jul 2022
-									</p>
-								</div>
-								<p class="cart-exhibitions__about">
-									Béla Kádár (1877–1956) was a Hungarian painter influenced by Der Blaue Reiter, Cubism,
-									Futurism,
-									Neo-Primitivism, Constructivism, and Metaphysical painting.
-								</p>
-							</div>
-						</div>
-					</div> -->
+						</exhibition-cart-item>
+					</div>				
 				</div>
 			</div>
 		</div>
@@ -176,13 +48,15 @@
 
 <script>
 import ButtonToTop from '@/components/ButtonToTop.vue';
-// import ExhibitionCartItem from '@/components/ExhibitionCartItem.vue';
+import ExhibitionCartItem from '@/components/ExhibitionCartItem.vue';
+import {ref, computed} from 'vue';
+
 // import CalendarCarusel from '@/components/ExhibitionsCalendarCarusel.vue';
 export default {
 	name: 'PageExhibitions',
 	components: {
 		ButtonToTop,
-		// ExhibitionCartItem,
+		ExhibitionCartItem,
 		// CalendarCarusel,
 	},
 	props: {
@@ -191,8 +65,54 @@ export default {
 			require: true,
 		}
 	},
-	setup() {
+	setup(props) {
+		let filter = ref('all'); 
 		
+
+		const filteredItems = computed(() => {
+			return [...props.ExhibitionsList].filter((el) => {
+				if(filter.value == 'all') return true;
+				if(filter.value === 'online') {
+					return el.typeOnline;
+				}
+				if(filter.value === 'offline') return !el.typeOnline
+			})
+		})
+
+		let classesExhibitions = ref([
+			'clart-1',
+			'clart-2',
+			'clart-3',
+		])
+				
+		const getClass = (index) => {
+			let classes = {
+				'cart-1': true,
+				'cart-2': false,
+				'cart-3': false,
+			}
+			// console.log(index);
+			if(!(index % 2 == 0)) {
+				classes['cart-1'] = true;
+			}
+			else {
+				classes['cart-1'] = false;
+				classes['cart-2'] = true;
+			}
+			if(index % 6 == 0) {
+				classes['cart-2'] = false;
+				classes['cart-3'] = true;
+			}
+			
+			return classes;
+		}
+		
+		return {
+			getClass,
+			classesExhibitions,
+			filter,
+			filteredItems
+		}
 	},
 }
 </script>
