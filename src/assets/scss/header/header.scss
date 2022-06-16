@@ -93,6 +93,9 @@
 			background-color: $DarkWhite;
 
 		}
+		&-active {
+			width: 100%;
+		}
 
 		&:hover {
 			&::after {

@@ -9,7 +9,7 @@
 			</div>
 
 			<div class="ticket-pick__count">
-				<button @click.prevent.stop="decTickets" class="ticket-pick__btn-left" btn-left>
+				<button @click.prevent.stop="decTickets(); onChange()" class="ticket-pick__btn-left" btn-left>
 					-
 				</button>
 				<label class="ticket-pick__number">
@@ -17,7 +17,7 @@
 						type="number" min="0" max="99" ticket-count v-model="countTickets">
 					<p>{{countTickets}}</p>
 				</label>
-				<button @click.prevent.stop ="incTickets" class="ticket-pick__btn-right" btn-right>
+				<button @click.prevent.stop ="incTickets(); onChange()" class="ticket-pick__btn-right" btn-right>
 					+
 				</button>
 			</div>
@@ -26,12 +26,15 @@
 </template>
 
 <script>
+// import { emit } from 'process';
 import {ref} from 'vue';
 export default {
 	name: 'SelectTickets',
-	setup() {
+	props: ['cTickets'],
+	emits: ['onChange'],
+	setup(props, {emit}) {
 		const maxValue = 99;
-		let countTickets = ref(0); 
+		let countTickets = ref(props.cTickets); 
 		const incTickets = () => {
 			if(countTickets.value < maxValue) {
 				countTickets.value++;
@@ -41,10 +44,15 @@ export default {
 			if(countTickets.value > 0)
 			countTickets.value--;
 		}
+
+		const onChange = () => {
+			emit('onChange', countTickets);
+		}
 		return {
 			countTickets,
 			incTickets,
 			decTickets,
+			onChange,
 		}
 	},
 }

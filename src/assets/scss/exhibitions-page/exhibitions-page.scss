@@ -81,34 +81,30 @@
 		grid-row: auto / span 2;
 		grid-column: auto / span 2;
 	}
-
-	.cart-4 {
-		// grid-area: cart4;
-	}
-
-	.cart-5 {
-		// grid-area: cart5;
-	}
-
-	.cart-6 {
-		// grid-area: cart6;
-	}
 }
 
 .exhibitions-btn {
 	margin: 128px 0 64px 0;
 }
 
-.mixitup-control-active {
+.exhibitions-carts__btn {
+	transition: all 0.5s ease;
+
 	&::after {
+		transition: all 0.4s ease;
 		content: '';
 		position: absolute;
 		bottom: 0;
 		left: 0;
 		right: 0;
-		width: 100%;
+		width: 0;
 		height: 3px;
 		background-color: #000;
+	}
+}
 
+.mixitup-control-active{
+	&::after {
+		width: 100%;
 	}
 }

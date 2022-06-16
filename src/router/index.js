@@ -32,6 +32,10 @@ const routes = [
 		name: 'PageErore',
 		component: () => import('@/pages/PageErrore.vue'),
 	},
+	{
+		// path: '*',
+		redirect: '/404'
+	},
 ]
 
 const router = createRouter({

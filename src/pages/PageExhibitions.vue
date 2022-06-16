@@ -11,14 +11,14 @@
 			</div>
 		</section>
 
-		<!-- <calendar-carusel/> -->
+		<calendar-carusel/>
 
 		<div class="exhibitions-carts">
 			<div class="exhibitions-cart__container container">
 				<div class="exhibitions-carts__buttons">
-					<button @click="filter='all'" class="exhibitions-carts__btn" data-filter="all">All exhibitions</button>
-					<button @click="filter='online'" class="exhibitions-carts__btn" data-filter=".online">Online</button>
-					<button @click="filter='offline'" class="exhibitions-carts__btn" data-filter=".offline">Offline</button>
+					<button @click="filter='all'; currentFilter=0" class="exhibitions-carts__btn" :class="{'mixitup-control-active': currentFilter === 0 }" >All exhibitions</button>
+					<button @click="filter='online'; currentFilter=1" class="exhibitions-carts__btn" :class="{'mixitup-control-active': currentFilter === 1 }">Online</button>
+					<button @click="filter='offline'; currentFilter=2" class="exhibitions-carts__btn" :class="{'mixitup-control-active': currentFilter === 2 }">Offline</button>
 				</div>
 
 				<div class="exhibitions-carts__date">
@@ -51,13 +51,13 @@ import ButtonToTop from '@/components/ButtonToTop.vue';
 import ExhibitionCartItem from '@/components/ExhibitionCartItem.vue';
 import {ref, computed} from 'vue';
 
-// import CalendarCarusel from '@/components/ExhibitionsCalendarCarusel.vue';
+import CalendarCarusel from '@/components/ExhibitionsCalendarCarusel.vue';
 export default {
 	name: 'PageExhibitions',
 	components: {
 		ButtonToTop,
 		ExhibitionCartItem,
-		// CalendarCarusel,
+		CalendarCarusel,
 	},
 	props: {
 		ExhibitionsList: {
@@ -66,8 +66,8 @@ export default {
 		}
 	},
 	setup(props) {
-		let filter = ref('all'); 
-		
+		let filter = ref('all');
+		let currentFilter = 0;
 
 		const filteredItems = computed(() => {
 			return [...props.ExhibitionsList].filter((el) => {
@@ -111,7 +111,8 @@ export default {
 			getClass,
 			classesExhibitions,
 			filter,
-			filteredItems
+			filteredItems,
+			currentFilter
 		}
 	},
 }

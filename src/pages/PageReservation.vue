@@ -10,51 +10,11 @@
 			</div>
 		<div class="reservation__container container">
 			<div class="reservation__content">
-				<form-reseve/>
+				<form-reseve @on-changes-tickets="handleTickets" :sourceInput="dataInput"/>
 				<aside-menu/>
 				<div class="reservation__price-total  price-reservation">
-			<h6 class="price-reservation__title">
-				Total:
-			</h6>
-			<!--- ??????????????? -->
-			<div class="price-reservation__items">
-				<div class="price-reservation__item" id="ticket-base">
-					<div class="price-reservation__name">
-						Without lugot
-					</div>
-					<div class="price-reservation__price">
-
-					</div>
-					<div class="price-reservation__count">
-
-					</div>
-				</div>
-				<div class="price-reservation__item" id="ticket-retirees">
-					<div class="price-reservation__name">
-						Retirees
-					</div>
-					<div class="price-reservation__price">
-
-					</div>
-					<div class="price-reservation__count">
-
-					</div>
-				</div>
-				<div class="price-reservation__item" id="ticket-student">
-					<div class="price-reservation__name">
-						Students
-					</div>
-					<div class="price-reservation__price">
-
-					</div>
-					<div class="price-reservation__count">
-
-					</div>
-				</div>
-			</div>
-			<div class="price-reservation__total">
-				0 ₽
-			</div>
+			
+			<total-price :propTotalPrice="dataInput.tickets"/>
 		</div>
 			</div>
 		</div>
@@ -65,16 +25,46 @@
 <script>
 import FormReseve from '@/components/PageReservationFormReserv.vue'
 import AsideMenu from '@/components/PageReservationAsideMenu.vue'
+import TotalPrice from '@/components/PageReservationTotalPrice.vue'
 
 
+import {ref} from 'vue';
 export default {
 	name: 'PageReservation',
 	components: {
 		FormReseve,
 		AsideMenu,
+		TotalPrice,
 	},
 	setup() {
+		let dataInput = ref({
+			selectedDate: null,
+			selectedTime: null,
+			tickets: {
+				bases: 0,
+				retirees: 0,
+				students: 0,
+			},
+			name: '',
+			phone: '',
+			selectedSocial: {
+				whatsApp: false,
+				telegram: false,
+				email: false,
+				sms: false,
+			},
+			selectedPayment: null,
+		});
+
+
+		const handleTickets = item => {
+			dataInput = ref(item);
+		}
 		
+		return {
+			handleTickets,
+			dataInput,
+		}
 	},
 }
 </script>

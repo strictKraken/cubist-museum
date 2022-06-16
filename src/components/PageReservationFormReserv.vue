@@ -53,8 +53,8 @@
 				</span>
 			</h6>
 			<div class="form-reservation__date-pick">
-				<label @click="choiceDate.value = true" v-for="item in data.dateExhibition" :key="item.id" class="radio-btn-rectangle__lable">
-					<input class="radio-btn-rectangle__input" type="radio" name="date-pick" v-model="choiceDate" >
+				<label v-for="item in data.dateExhibition" :key="item.id" class="radio-btn-rectangle__lable">
+					<input class="radio-btn-rectangle__input" type="radio" name="date-pick" v-model="dataInput.selectedDate" :value="item">
 					<div class="radio-btn-rectangle__day">
 						{{ item.index }}
 					</div>
@@ -76,7 +76,7 @@
 				</h6>
 				<div class="form-reservation__time-pick">
 					<label v-for="item in data.timeExhibition" :key="item.index" class="radio-btn-rectangle__lable">
-						<input class="radio-btn-rectangle__input" type="radio" name="time-pick" v-model="choiceTime">
+						<input class="radio-btn-rectangle__input" type="radio" name="time-pick" v-model="dataInput.selectedTime" :value="item">
 						<div class="radio-btn-rectangle__time">
 							{{ item }}
 						</div>
@@ -92,7 +92,7 @@
 					</span>
 				</h6>
 				
-				<select-tickets>
+				<select-tickets @onChange="handleChanges" :cTickets="dataInput.tickets.bases">
 					<template v-slot:text>
 						Without lugot	
 					</template>
@@ -100,7 +100,7 @@
 						800 ₽
 					</template>
 				</select-tickets>
-				<select-tickets>
+				<select-tickets @onChange="handleChanges2" :cTickets="dataInput.tickets.retirees">
 					<template v-slot:text>
 						Retirees	
 					</template>
@@ -108,7 +108,7 @@
 						free
 					</template>
 				</select-tickets>
-				<select-tickets>
+				<select-tickets @onChange="handleChanges3" :cTickets="dataInput.tickets.students">
 					<template v-slot:text>
 						Students	
 					</template>
@@ -127,7 +127,7 @@
 				Please state your Name
 			</p>
 			<input class="form-reservation__input" type="text" placeholder="What is your name?"
-				maxlength="55" name="name-input" v-model='name'>
+				maxlength="55" name="name-input" v-model='dataInput.name'>
 
 			<h6 class="form-reservation__section-name">
 				Phone number
@@ -135,7 +135,7 @@
 			<p class="form-reservation__errore-input-text">
 				Please state your phone number
 			</p>
-			<input class="form-reservation__input" type="tel" placeholder="+7(___)-___-__-__" name="data-tel-input" data-tel-input v-model='phone'>
+			<input class="form-reservation__input" type="tel" placeholder="+7(___)-___-__-__" name="data-tel-input" data-tel-input v-model='dataInput.phone'>
 			<h6 class="form-reservation__section-name">
 				Choose to receive a tour invitation links
 				<div class="form-reservation__help" id="help">
@@ -274,18 +274,26 @@
 </template>
 
 <script>
-import {ref} from 'vue';
+import {onMounted, ref} from 'vue';
 
 import IconTriangle from "./icons/IconTriangle.vue";
 import SelectTickets from './PageReservationSelectTickets.vue';
 
 export default {
 	name: 'FormReseve',
+	emits: ['onChangesTickets'],
+	props: {
+		sourceInput : {
+			type: Object,
+			require: true,
+		}
+	},
 	components: {
 		IconTriangle,
 		SelectTickets,
 	},
-	setup() {
+	setup(props, {emit}) {
+		
 		const data = {
 			dateExhibition: {
 				1: '17.02.2022',
@@ -299,51 +307,80 @@ export default {
 				3: '16:00',
 			}
 		}
-		
+		//data user
+		let dataInput = ref(props.sourceInput);
+
+		const onChangesTickets = () => {
+			emit('onChangesTickets',dataInput)
+		}
+
+		const handleChanges = item => {
+			dataInput.value.tickets.bases = item.value
+			emit('onChangesTickets',dataInput)
+		}
+		const handleChanges2 = item => {
+			dataInput.value.tickets.retirees = item.value
+			emit('onChangesTickets',dataInput)
+		}
+		const handleChanges3 = item => {
+			dataInput.value.tickets.students = item.value
+			emit('onChangesTickets',dataInput)
+		}
+
+
+		//Form
 		let currentStep = ref(0);
 		const firstStep = 0;
 		const lastStep = 2;
-		//data for sent
-		let choiceDate = ref(false);
-		let choiceTime = ref(false);
-		let name = ref('');
-		let phone = ref('');
+		let progressLine; 
 		
+		onMounted(() => {
+			progressLine = document.getElementsByClassName('steps-line__progress-line');
+			onChangesTickets();
+		})
+
 		const btnPrev = () => {
 			if(currentStep.value > firstStep) {
 				currentStep.value--;
 			}
+			lineUpdate();
 		}
 		const btnNext = () => {
-			if(currentStep.value < lastStep && validation()) {
+			if(currentStep.value < lastStep) {
 				currentStep.value++;
 			}
+			lineUpdate();
+			console.log(dataInput.value.tickets);
 		}
-
-		const validation = () => {
-			if(currentStep.value === 0) { 
-				let errors = [];
-				if(!choiceDate.value) {
-					errors.push('Choice the date please');
-				}
-				if(!choiceTime.value) {
-					errors.push('Choice the time please');
-				}
-				if(!errors.length) {
-					return true;
-				}
-			}
+		const lineUpdate = () => {
+			currentStep.value === 0 ? progressLine[0].style.width = `${0}%` : progressLine[0].style.width = `${ 100 / (lastStep + 1 - currentStep.value)}%`;
 		}
+		
+		// const validation = () => {
+		// 	if(currentStep.value === 0) { 
+		// 		let errors = [];
+		// 		if(!choiceDate.value) {
+		// 			errors.push('Choice the date please');
+		// 		}
+		// 		if(!choiceTime.value) {
+		// 			errors.push('Choice the time please');
+		// 		}
+		// 		if(!errors.length) {
+		// 			return true;
+		// 		}
+		// 	}
+		// }
 
 		return {
 			currentStep,
 			btnNext,
 			btnPrev,
-			choiceDate,
-			choiceTime,
 			data,
-			name,
-			phone,
+			dataInput,
+			handleChanges,
+			handleChanges2,
+			handleChanges3,
+			onChangesTickets,
 		}
 	},
 

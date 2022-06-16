@@ -37,6 +37,7 @@
 			SearchInput,
 		},
 		setup() {
+			let currentLink;
 			const clickLink = () =>{
 				$('.menu__body,.header__burger').removeClass('active');
 				$('.search').removeClass('active-search');
@@ -44,11 +45,16 @@
 			}
 			return {
 				clickLink,
+				currentLink
 			}
 		},
 	}
 </script>
 
-<style lang='scss'>
-
+<style lang='scss' scoped>
+.router-link-active {
+	&::after {
+		width: 100%;
+	}
+}
 </style>
