@@ -1,5 +1,5 @@
 <template>
-	<form action="submit" class="reservation__form" method="get">
+	<form class="reservation__form" method="get">
 		<div class="reservation__steps steps-line">
 			<div class="steps-line__progress">
 				<div class="steps-line__progress-line"></div>
@@ -147,7 +147,7 @@
 			</p>
 			<div class="form-reservation__contacts-link">
 				<label class="form-reservation__contacts-item">
-					<input type="checkbox" class="form-reservation__checkbox">
+					<input type="checkbox" class="form-reservation__checkbox" v-model="dataInput.selectedSocial.whatsApp">
 					<img class="img-svg" src="@/img/icons/whatsapp.svg" alt="">
 					<div class="form-reservation__contacts-text">
 						WhatsApp
@@ -157,7 +157,7 @@
 			</div>
 			<div class="form-reservation__contacts-link">
 				<label class="form-reservation__contacts-item">
-					<input type="checkbox" class="form-reservation__checkbox">
+					<input type="checkbox" class="form-reservation__checkbox" v-model="dataInput.selectedSocial.telegram">
 					<img class="img-svg" src="@/img/icons/telegram.svg" alt="">
 					<div class="form-reservation__contacts-text">
 						Telegram
@@ -167,7 +167,7 @@
 			</div>
 			<div class="form-reservation__contacts-link">
 				<label class="form-reservation__contacts-item" id="checkbox-mail">
-					<input type="checkbox" class="form-reservation__checkbox">
+					<input type="checkbox" class="form-reservation__checkbox" v-model="dataInput.selectedSocial.email">
 					<img class="img-svg" src="@/img/icons/google.svg" alt="">
 					<div class="form-reservation__contacts-text">
 						Email
@@ -175,11 +175,11 @@
 					<div class="form-reservation__checkbox-fake"></div>
 				</label>
 				<input class="form-reservation__input form-reservation__contacts-mail" type="email"
-					name="" id="mail" placeholder="Email address">
+					name="" id="mail" placeholder="Email address" >
 			</div>
 			<div class="form-reservation__contacts-link">
 				<label class="form-reservation__contacts-item">
-					<input type="checkbox" class="form-reservation__checkbox">
+					<input type="checkbox" class="form-reservation__checkbox" v-model="dataInput.selectedSocial.sms">
 					<img class="img-svg" src="@/img/icons/messages.svg" alt="">
 					<div class="form-reservation__contacts-text">
 						SMS
@@ -279,6 +279,9 @@ import {onMounted, ref} from 'vue';
 import IconTriangle from "./icons/IconTriangle.vue";
 import SelectTickets from './PageReservationSelectTickets.vue';
 
+
+import {maskPhone} from '@/assets/js/mask-phone.js';
+
 export default {
 	name: 'FormReseve',
 	emits: ['onChangesTickets'],
@@ -293,7 +296,8 @@ export default {
 		SelectTickets,
 	},
 	setup(props, {emit}) {
-		
+		maskPhone();
+
 		const data = {
 			dateExhibition: {
 				1: '17.02.2022',

@@ -1,4 +1,6 @@
-document.addEventListener("DOMContentLoaded", function () {
+// document.addEventListener("DOMContentLoaded", )
+function maskPhone() {
+	
 	let phoneInputs = document.querySelectorAll('input[data-tel-input]');
 
 	let getInputNumbersValue = function (input) {
@@ -77,4 +79,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		input.addEventListener('paste', onPhonePaste);
 
 	}
-})
+	console.log('mask')
+}
+
+export {maskPhone}

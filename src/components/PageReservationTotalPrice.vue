@@ -9,10 +9,10 @@
                     Without lugot
                 </div>
                 <div class="price-reservation__price">
-
+                    {{ prices.base * dataTotalPrice.bases }} ₽
                 </div>
                 <div class="price-reservation__count">
-                    {{ dataTotalPrice.bases }}
+                    x{{ dataTotalPrice.bases }}
                 </div>
             </div>
             <div v-if="dataTotalPrice.retirees > 0" class="price-reservation__item" id="ticket-retirees">
@@ -20,10 +20,10 @@
                     Retirees
                 </div>
                 <div class="price-reservation__price">
-
+                    {{ prices.retiree * dataTotalPrice.retirees }} ₽ 
                 </div>
                 <div class="price-reservation__count">
-                    {{ dataTotalPrice.retirees }}
+                    x{{ dataTotalPrice.retirees }}
                 </div>
             </div>
             <div v-if="dataTotalPrice.students > 0" class="price-reservation__item" id="ticket-student">
@@ -31,15 +31,15 @@
                     Students
                 </div>
                 <div class="price-reservation__price">
-                    
+                    {{ prices.student * dataTotalPrice.students }} ₽
                 </div>
                 <div class="price-reservation__count">
-                    {{ dataTotalPrice.students }}
+                    x{{ dataTotalPrice.students }}
                 </div>
             </div>
 			</div>
 			<div class="price-reservation__total">
-				0 ₽
+				{{ prices.student * dataTotalPrice.students + prices.retiree * dataTotalPrice.retirees + prices.base * dataTotalPrice.bases }} ₽
 			</div>
     </div>
 </template>
@@ -55,19 +55,16 @@ export default {
         }
     },
     setup(props) {
-        // let dataTotalPrice = ref({
-        //     base: 0,
-        //     retriees: 0,
-        //     students: 0,
-        // })
-        //let dataTotalPrice = ref(props.propTotalPrice);
-        // let dataTotalPrice = computed(() => {
-        //     return ref(props.propTotalPrice);
-        // })
         let dataTotalPrice = ref(props.propTotalPrice);
-        console.log(dataTotalPrice.value.value)
+        const prices = {
+            base: 800,
+            retiree: 0,
+            student: 400,
+        }
+
         return {
             dataTotalPrice,
+            prices
         }
     },
 }
