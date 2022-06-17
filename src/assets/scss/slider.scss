@@ -23,7 +23,7 @@
     &__prev-btn {
         width: 167px;
         height: 167px;
-        // background: url('./../img/icons/Arrow-left.svg') 0 0 no-repeat;
+        background: url('@/img/icons/Arrow-left.svg') 0 0 no-repeat;
         background-position: center;
         &:hover {
             background-color: #D8DFDE;
@@ -34,7 +34,7 @@
     &__next-btn {
         width: 167px;
         height: 167px;
-        // background: url('./../img/icons/Arrow-right.svg') 0 0 no-repeat;
+        background: url('@/img/icons/Arrow-right.svg') 0 0 no-repeat;
         background-position: center;
         &:hover {
             background-color: #D8DFDE;

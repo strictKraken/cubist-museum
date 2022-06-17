@@ -4,10 +4,15 @@ import PageHome from '@/pages/PageHome.vue';
 import PageExhibitions from '@/pages/PageExhibitions.vue';
 import PageItemExhibition from '@/pages/PageItemExhibition.vue';
 import PageResrvation from '@/pages/PageReservation.vue';
+import PageSuccessfullPaid from '@/pages/PageSuccessfullPaid.vue';
 
 const routes = [
 	{
 		path: '/',
+		redirect: {name: 'Home'}
+	},
+	{
+		path: '/home',
 		name: 'Home',
 		component: PageHome,
 	},
@@ -28,14 +33,16 @@ const routes = [
 
 	},
 	{
+		path: '/successfull',
+		name: 'successfull',
+		component: PageSuccessfullPaid,
+	},
+	{
 		path: '/404',
 		name: 'PageErore',
 		component: () => import('@/pages/PageErrore.vue'),
-	},
-	{
-		// path: '*',
-		redirect: '/404'
-	},
+	}
+	
 ]
 
 const router = createRouter({

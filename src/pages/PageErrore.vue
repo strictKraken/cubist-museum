@@ -22,8 +22,8 @@
 				</ul>
 			</div>
 			<div class="errore-page__buttons">
-				<button class="errore-page__btn-back white-button">Back</button>
-				<button class="errore-page__btn-home green-button">Back home</button>
+				<!-- <button class="errore-page__btn-back white-button">Back</button> -->
+				<router-link :to="{name: 'Home'}" class="errore-page__btn-home green-button">Back home</router-link>
 			</div>
 		</div>
 	</div>

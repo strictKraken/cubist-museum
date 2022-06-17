@@ -1,10 +1,9 @@
 <template>
-	<form class="reservation__form" method="get">
+	<form class="reservation__form" method="get" @submit.prevent ref="form">
 		<div class="reservation__steps steps-line">
 			<div class="steps-line__progress">
 				<div class="steps-line__progress-line"></div>
 			</div>
-
 			<div class="steps-line__step active-steps" :class="{ 'active-steps': currentStep >= 0 }">
 				<div class="steps-line__step-style">
 					<icon-triangle/>
@@ -47,7 +46,7 @@
 		<div v-if="currentStep === 0" class="reservation__form-step form-reservation">
 			<h6 class="form-reservation__section-name">
 				Select the date
-				<span class="form-reservation__errore-head errore-head">
+				<span v-if="errors.includes(10)" class="form-reservation__errore-head errore-head">
 					<img src="@/img/icons/error.svg" alt="error">
 					Please select a date
 				</span>
@@ -69,7 +68,7 @@
 			<div class="form-reservation__ticket-block">
 				<h6 class="form-reservation__section-name">
 					Select the time
-					<span class="form-reservation__errore-head errore-head">
+					<span v-if="errors.includes(11)" class="form-reservation__errore-head errore-head">
 						<img src="@/img/icons/error.svg" alt="errore">
 						Please select a time
 					</span>
@@ -86,13 +85,13 @@
 				</div>
 				<h6 class="form-reservation__section-name">
 					Select tickets
-					<span class="form-reservation__errore-head errore-head">
+					<span v-if="errors.includes(12)" class="form-reservation__errore-head errore-head">
 						<img src="@/img/icons/error.svg" alt="error">
 						Please select a ticket
 					</span>
 				</h6>
 				
-				<select-tickets @onChange="handleChanges" :cTickets="dataInput.tickets.bases">
+				<select-tickets v-model:cTickets="dataInput.tickets.bases" :checkStatus="false">
 					<template v-slot:text>
 						Without lugot	
 					</template>
@@ -100,7 +99,7 @@
 						800 ₽
 					</template>
 				</select-tickets>
-				<select-tickets @onChange="handleChanges2" :cTickets="dataInput.tickets.retirees">
+				<select-tickets v-model:cTickets="dataInput.tickets.retirees" :checkStatus="true">
 					<template v-slot:text>
 						Retirees	
 					</template>
@@ -108,7 +107,7 @@
 						free
 					</template>
 				</select-tickets>
-				<select-tickets @onChange="handleChanges3" :cTickets="dataInput.tickets.students">
+				<select-tickets v-model:cTickets="dataInput.tickets.students" :checkStatus="true">
 					<template v-slot:text>
 						Students	
 					</template>
@@ -123,7 +122,7 @@
 			<h6 class="form-reservation__section-name">
 				Name
 			</h6>
-			<p class="form-reservation__errore-input-text">
+			<p v-if="errors.includes(13)" class="form-reservation__errore-input-text">
 				Please state your Name
 			</p>
 			<input class="form-reservation__input" type="text" placeholder="What is your name?"
@@ -132,17 +131,19 @@
 			<h6 class="form-reservation__section-name">
 				Phone number
 			</h6>
-			<p class="form-reservation__errore-input-text">
+			<p v-if="errors.includes(14)" class="form-reservation__errore-input-text">
 				Please state your phone number
 			</p>
-			<input class="form-reservation__input" type="tel" placeholder="+7(___)-___-__-__" name="data-tel-input" data-tel-input v-model='dataInput.phone'>
+			
+			<input-phone v-model:phone="dataInput.phone"/>
+
 			<h6 class="form-reservation__section-name">
 				Choose to receive a tour invitation links
 				<div class="form-reservation__help" id="help">
 					<img class="" src="@/img/icons/qustion_sign.svg" alt="help">
 				</div>
 			</h6>
-			<p class="form-reservation__errore-input-text">
+			<p v-if="errors.includes(15)" class="form-reservation__errore-input-text">
 				Please choose to receive a tour link
 			</p>
 			<div class="form-reservation__contacts-link">
@@ -187,36 +188,36 @@
 					<div class="form-reservation__checkbox-fake"></div>
 				</label>
 			</div>
-			<div class="form-reservation__add-new">
+			<!-- <div class="form-reservation__add-new">
 				<div class="form-reservation__section-name">
 					Add a person
 				</div>
 				<button class="form-reservation__add-btn" id="add-new-person">
 					<img class="img-svg" src="@/img/icons/plus-person.svg" alt="">
 				</button>
-			</div>
+			</div> -->
 		</div>
 		
 		<div v-else-if="currentStep === 2" class="reservation__form-step form-reservation">
 				<h6 class="form-reservation__section-name">
 					Select payment
-					<span class="form-reservation__errore-head errore-head">
+					<span v-if="errors.includes(16)" class="form-reservation__errore-head errore-head">
 						<img src="@/img/icons/error.svg" alt="error">
 						Please choose a payment
 					</span>
 				</h6>								
 				
 			<label class="form-reservation__payment">
-				<input type="radio" name="payment">
-				<img class="img-svg" src="@/img/icons/payment/paypal.svg" alt="PayPal">
+				<input type="radio" name="payment" v-model="dataInput.selectedPayment" value="paypal">
+				<icon-payment-pay-pal-vue/>
 				<p class="form-reservation__payment-name">
 					PayPal
 				</p>
 				<div class="form-reservation__radio-fake"></div>
 			</label>
 			<label class="form-reservation__payment">
-				<input type="radio" name="payment">
-				<img class="img-svg" src="@/img/icons/payment/google.svg" alt="Google Pay">
+				<input type="radio" name="payment" v-model="dataInput.selectedPayment" value="google">
+				<icon-payment-google-vue/>
 				<p class="form-reservation__payment-name">
 					Google Pay
 				</p>
@@ -224,41 +225,40 @@
 			</label>
 
 			<label class="form-reservation__payment">
-				<input type="radio" name="payment">
-				<img class="img-svg" src="@/img/icons/payment/tinkoff.svg" alt="Tinkoff Pay">
-
+				<input type="radio" name="payment" v-model="dataInput.selectedPayment" value="tinkoff">
+				<icon-payment-tinkoff-vue/>
 				<p class="form-reservation__payment-name">
 					Tinkoff Pay
 				</p>
 				<div class="form-reservation__radio-fake"></div>
 			</label>
 			<label class="form-reservation__payment">
-				<input type="radio" name="payment">
-				<img class="img-svg" src="@/img/icons/payment/qiwi.svg" alt="QIWI Wallet">
+				<input type="radio" name="payment" v-model="dataInput.selectedPayment" value="qiwi">
+				<icon-payment-qiwi-vue/>
 				<p class="form-reservation__payment-name">
 					QIWI Wallet
 				</p>
 				<div class="form-reservation__radio-fake"></div>
 			</label>
 			<label class="form-reservation__payment">
-				<input type="radio" name="payment">
-				<img class="img-svg" src="@/img/icons/payment/webmoney.svg" alt="Web Money">
+				<input type="radio" name="payment" v-model="dataInput.selectedPayment" value="webmoney">
+				<icon-payment-web-money-vue/>
 				<p class="form-reservation__payment-name">
 					Web Money
 				</p>
 				<div class="form-reservation__radio-fake"></div>
 			</label>
 			<label class="form-reservation__payment">
-				<input type="radio" name="payment">
-				<img class="img-svg" src="@/img/icons/payment/sberbank.svg" alt="Sberbank Online">
+				<input type="radio" name="payment" v-model="dataInput.selectedPayment" value="sberbank">
+				<icon-payment-sberbank-vue/>
 				<p class="form-reservation__payment-name">
 					Sberbank Online
 				</p>
 				<div class="form-reservation__radio-fake"></div>
 			</label>
 			<label class="form-reservation__payment">
-				<input type="radio" name="payment">
-				<img class="img-svg" src="@/img/icons/payment/mastercard.svg" alt="Bankcard">
+				<input type="radio" name="payment" v-model="dataInput.selectedPayment" value="mastercard">
+				<icon-payment-bankcard-vue/>
 				<p class="form-reservation__payment-name">
 					Bankcard
 				</p>
@@ -267,20 +267,26 @@
 		</div>
 
 		<div class="reservation__navigation">
-			<button v-if="currentStep > 0" @click.prevent="btnPrev" class="reservation__btn-prev white-button">Back</button>
-			<button @click.prevent="btnNext" class="reservation__btn-next green-button">Next</button>
+			<button v-if="currentStep > 0" @click.prevent="btnPrev(); currentStep === lastStep ? text = 'Buy' : text = 'Next'" class="reservation__btn-prev white-button">Back</button>
+			<button @click.prevent="btnNext(); currentStep === lastStep ? text = 'Buy' : text = 'Next'" class="reservation__btn-next green-button">{{ text }}</button>
 		</div>
 	</form>    
 </template>
 
 <script>
-import {onMounted, ref} from 'vue';
+import { onMounted, ref} from 'vue';
 
 import IconTriangle from "./icons/IconTriangle.vue";
 import SelectTickets from './PageReservationSelectTickets.vue';
-
-
-import {maskPhone} from '@/assets/js/mask-phone.js';
+import InputPhone from "./PageReservationInputPhone.vue";
+import IconPaymentPayPalVue from './icons/IconPaymentPayPal.vue';
+import IconPaymentGoogleVue from './icons/IconPaymentGoogle.vue';
+import IconPaymentQiwiVue from './icons/IconPaymentQiwi.vue';
+import IconPaymentSberbankVue from './icons/IconPaymentSberbank.vue';
+import IconPaymentTinkoffVue from './icons/IconPaymentTinkoff.vue';
+import IconPaymentWebMoneyVue from './icons/IconPaymentWebMoney.vue';
+import IconPaymentBankcardVue from './icons/IconPaymentBankcard.vue';
+import router from '@/router';
 
 export default {
 	name: 'FormReseve',
@@ -294,10 +300,17 @@ export default {
 	components: {
 		IconTriangle,
 		SelectTickets,
+		InputPhone,
+		IconPaymentPayPalVue,
+		IconPaymentGoogleVue,
+		IconPaymentQiwiVue,
+		IconPaymentSberbankVue,
+		IconPaymentTinkoffVue,
+		IconPaymentWebMoneyVue, 
+		IconPaymentBankcardVue,
+
 	},
 	setup(props, {emit}) {
-		maskPhone();
-
 		const data = {
 			dateExhibition: {
 				1: '17.02.2022',
@@ -311,6 +324,7 @@ export default {
 				3: '16:00',
 			}
 		}
+		let text = ref('Next');
 		//data user
 		let dataInput = ref(props.sourceInput);
 
@@ -318,26 +332,14 @@ export default {
 			emit('onChangesTickets',dataInput)
 		}
 
-		const handleChanges = item => {
-			dataInput.value.tickets.bases = item.value
-			emit('onChangesTickets',dataInput)
-		}
-		const handleChanges2 = item => {
-			dataInput.value.tickets.retirees = item.value
-			emit('onChangesTickets',dataInput)
-		}
-		const handleChanges3 = item => {
-			dataInput.value.tickets.students = item.value
-			emit('onChangesTickets',dataInput)
-		}
-
-
 		//Form
 		let currentStep = ref(0);
 		const firstStep = 0;
 		const lastStep = 2;
 		let progressLine; 
 		
+		let errors = ref([]);
+
 		onMounted(() => {
 			progressLine = document.getElementsByClassName('steps-line__progress-line');
 			onChangesTickets();
@@ -350,30 +352,55 @@ export default {
 			lineUpdate();
 		}
 		const btnNext = () => {
-			if(currentStep.value < lastStep) {
+			if(currentStep.value === lastStep) submitForm();
+			
+			errors.value = validation();
+			if(currentStep.value < lastStep && !errors.value.length) {
 				currentStep.value++;
 			}
 			lineUpdate();
-			console.log(dataInput.value.tickets);
+			
 		}
+	
 		const lineUpdate = () => {
 			currentStep.value === 0 ? progressLine[0].style.width = `${0}%` : progressLine[0].style.width = `${ 100 / (lastStep + 1 - currentStep.value)}%`;
 		}
 		
-		// const validation = () => {
-		// 	if(currentStep.value === 0) { 
-		// 		let errors = [];
-		// 		if(!choiceDate.value) {
-		// 			errors.push('Choice the date please');
-		// 		}
-		// 		if(!choiceTime.value) {
-		// 			errors.push('Choice the time please');
-		// 		}
-		// 		if(!errors.length) {
-		// 			return true;
-		// 		}
-		// 	}
-		// }
+		const validation = () => {
+			let errors = []
+			if(currentStep.value === 0) { 
+				if(!dataInput.value.selectedDate) {
+					errors.push(10);
+				}
+				if(!dataInput.value.selectedTime) {
+					errors.push(11);
+				}
+				if(dataInput.value.tickets.bases == 0 && dataInput.value.tickets.retiress == 0 && dataInput.value.tickets.stdents == 0 ) {
+					errors.push(12);
+				}
+			}
+			if(currentStep.value === 1) {
+				if(!dataInput.value.name) {
+					errors.push(13);
+				}
+				if(!dataInput.value.phone) {
+					errors.push(14);
+				}
+				if(!dataInput.value.selectedSocial.whatsApp && !dataInput.value.selectedSocial.telegram && !dataInput.value.selectedSocial.email && !dataInput.value.selectedSocial.sms) {
+					errors.push(15);
+				}
+			}
+			if(currentStep.value === 2) {
+				if(!dataInput.value.selectedPayment) {
+					errors.push(16)
+				}
+			}
+			return errors
+		}
+		
+		const submitForm = () => {
+			router.push({name: 'successfull'})
+		}
 
 		return {
 			currentStep,
@@ -381,10 +408,12 @@ export default {
 			btnPrev,
 			data,
 			dataInput,
-			handleChanges,
-			handleChanges2,
-			handleChanges3,
 			onChangesTickets,
+			submitForm,
+			validation,
+			errors,
+			lastStep,
+			text,
 		}
 	},
 
